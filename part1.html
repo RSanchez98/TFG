@@ -46,6 +46,7 @@ var config = {
     );
     }
 
+
     function create ()
     {
         this.add.image(400, 300, 'sky');
@@ -62,7 +63,7 @@ var config = {
         //--creación del sprite
         player = this.physics.add.sprite(100, 450, 'dude');
 
-        player.setBounce(0.2);
+        player.setBounce(0.1);
         player.setCollideWorldBounds(true);
 
         //--gravedad
@@ -74,7 +75,25 @@ var config = {
         //--controles
         cursors = this.input.keyboard.createCursorKeys();
         
+        //--estrellas
+        stars = this.physics.add.group({
+            key: 'star',
+            repeat: 11,
+            setXY: { x: 12, y: 0, stepX: 70 }
+        });
 
+        stars.children.iterate(function (child) {
+
+            child.setBounceY(Phaser.Math.FloatBetween(0.2, 0.2));
+
+        });
+
+        //--Colisiones
+        this.physics.add.collider(player, platforms);
+        this.physics.add.collider(stars, platforms);
+
+        this.physics.add.overlap(player, stars, collectStar, null, this);
+            
 
         this.anims.create({
             key: 'left',
@@ -123,6 +142,10 @@ var config = {
                 player.setVelocityY(-500);
             }
 
+    }
+    function collectStar (player, star)
+    {
+        star.disableBody(true, true);
     }
 
 </script>
