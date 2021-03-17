@@ -1,0 +1,6 @@
+17/03/2021
+	https://phaser.io/tutorials/making-your-first-phaser-3-game-spanish
+Parte 1 - Introduccion
+Descarga phaser3-tutorial
+- para agregarle el sistema de físicas Arcade se usa platforms = this.physics.add.staticGroup();
+
