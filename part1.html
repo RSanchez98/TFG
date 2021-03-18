@@ -14,23 +14,27 @@
 
 <script type="text/javascript">
 
-var config = {
-    type: Phaser.AUTO,
-    width: 800,
-    height: 600,
-    
-    physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: { y: 300 },
-            debug: false
+    var score = 0;
+    var scoreText;
+
+
+    var config = {
+        type: Phaser.AUTO,
+        width: 800,
+        height: 600,
+        
+        physics: {
+            default: 'arcade',
+            arcade: {
+                gravity: { y: 300 },
+                debug: false
+            }
+        },
+        scene: {
+            preload: preload,
+            create: create,
+            update: update
         }
-    },
-    scene: {
-        preload: preload,
-        create: create,
-        update: update
-    }
 };
 
     var game = new Phaser.Game(config);
@@ -43,7 +47,7 @@ var config = {
         this.load.image('bomb', 'assets/bomb.png');
         this.load.spritesheet('dude', 'assets/dude.png',
             { frameWidth: 32, frameHeight: 48 }
-    );
+        );
     }
 
 
@@ -94,6 +98,8 @@ var config = {
 
         this.physics.add.overlap(player, stars, collectStar, null, this);
             
+        //--puntuacion
+        scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
         this.anims.create({
             key: 'left',
@@ -146,6 +152,9 @@ var config = {
     function collectStar (player, star)
     {
         star.disableBody(true, true);
+
+        score += 10;
+        scoreText.setText('Score: ' + score);
     }
 
 </script>
