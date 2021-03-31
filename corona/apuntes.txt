@@ -1,0 +1,14 @@
+crear una variable -->  LOCAL
+nombre de la variable --> local = BACKGROUND
+signo '=' --> ASIGNAR VARIABLEÇ
+cargar imagen --> display.newImageRect() [permite cambiar el tamaño o escalar la imagen]
+centrar imagen en un eje X --> background.x = display.contentCenterX [igual para el eje Y]
+colocar en una altura determianda --> platform.y = display.contentHeight-25
+transparencia --> balloon.alpha = 0.8
+aplicar físicas --> local physics = require( "physics" )
+iniciar motor de físicas --> physics.start()
+convertir objetos / imagenes en objetos físicos --> physics.addBody
+
+physics.addBody(balloon, "dynamic", {radius=50, bounce=0.3});
+                          dinamico     forma      rebote siendo 1 su 100%
+                                      redonda
