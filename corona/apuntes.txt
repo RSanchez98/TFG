@@ -12,3 +12,22 @@ convertir objetos / imagenes en objetos físicos --> physics.addBody
 physics.addBody(balloon, "dynamic", {radius=50, bounce=0.3});
                           dinamico     forma      rebote siendo 1 su 100%
                                       redonda
+
+funciones --> local function nameFunction() ... end
+aplicar fuerzas --> balloon:applyLinearImpulse(0, 0.75, balloon.x, balloon.y)
+                    los dos primeros parametros le indican cuanta fuerza tienen que aplicar
+                    el primer valor para el eje X y el segundo para el Y
+                    los dos ultimos valores le indican al motor hacia donde aplicar la fuerza en relación al globo
+
+Primero, debemos decirle a Solar2D qué objeto está involucrado en el detector de eventos. Para este juego, 
+queremos detectar un evento relacionado directamente con el balloonobjeto.
+
+Inmediatamente después de esto, agregue dos puntos ( :) y luego addEventListener. En Lua, 
+esto se llama método de objeto . Esencialmente, addEventListenerdespués de los dos puntos, le dice a Solar2D 
+que queremos agregar un detector de eventos balloon, especificado antes de los dos puntos.
+
+Dentro de los paréntesis hay dos parámetros que completan el comando. El primer parámetro 
+es el tipo de evento que escuchará Solar2D, en este caso "tap". El segundo parámetro es la función 
+que se debe ejecutar (llamar) cuando ocurre el evento, en este caso la pushBalloon()función que escribimos 
+en la sección anterior. Básicamente, le estamos diciendo a Solar2D que ejecute la pushBalloon()función cada vez 
+que el usuario toque el globo.

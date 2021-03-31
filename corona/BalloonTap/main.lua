@@ -26,3 +26,21 @@ local physics = require("physics");
 physics.start();
 physics.addBody(platform, "static");
 physics.addBody(balloon, "dynamic", {radius=55, bounce=0.3});
+
+--COUNT
+local tapCount = 0
+local tapText = display.newText(tapCount, display.contentCenterX, 20, native.systemFont, 40)
+tapText:setFillColor(0,0,0)
+
+--FUNCTION  
+local function pushBalloon()
+    balloon:applyLinearImpulse(0, -0.75, balloon.x, balloon.y)
+    --CONT
+    tapCount = tapCount + 1
+    tapText.text = tapCount
+end
+
+--EVENT
+balloon:addEventListener("tap", pushBalloon )
+
+
