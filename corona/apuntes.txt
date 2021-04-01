@@ -45,9 +45,45 @@ que necesitan con respecto a su aplicación. Esto incluye las orientaciones admi
 nombres de archivos de iconos, complementos para incluir, información especial requerida por los 
 dispositivos y más.
 
+build.settings
 default = "portrait",--> Esta línea especifica que el juego debe comenzar en orientación vertical cuando 
 el usuario carga la aplicación por primera vez.
 
 supported = { "portrait", },-->  Esta línea especifica que la única orientación admitida también es vertical. 
 Eso significa que incluso si el usuario gira (orienta) el dispositivo físico en sus manos, su aplicación 
 permanecerá bloqueada en orientación vertical.
+
+config.lua
+scale--> sta importante configuración especifica cómo manejar el área de contenido para pantallas que no 
+coinciden con la relación de aspecto definida por la configuración widthy height, por ejemplo, 3: 4 en este 
+caso. Las dos opciones más comunes son "letterbox"y "zoomEven".
+
+letterbox --> escala el área de contenido para llenar la pantalla mientras conserva la misma relación de aspecto. 
+Toda el área de contenido residirá en la pantalla, pero esto puede resultar en "barras negras" en dispositivos con 
+relaciones de aspecto que difieren de la relación de aspecto de su contenido. Sin embargo, tenga en cuenta que aún 
+puede utilizar esta área "en blanco" y llenarla con elementos visuales colocándolos o extendiéndolos fuera de los 
+límites del área de contenido. Esencialmente, "letterbox"es un modo de escala ideal si desea asegurarse de que todo 
+en su área de contenido aparezca dentro de los límites de la pantalla en todos los dispositivos.
+
+zoomEven --> escala el área de contenido para llenar la pantalla mientras conserva la misma relación de aspecto. 
+Parte del contenido puede "sangrar" de los bordes de la pantalla en dispositivos con proporciones que difieren de la 
+proporción de su contenido. Básicamente, "zoomEven"es una buena opción para asegurarse de que toda la pantalla esté llena 
+con el área de contenido en todos los dispositivos (y el recorte de contenido cerca de los bordes exteriores es aceptable).
+
+physics.setGravity()--> simula la gravedad en el eje X como en el Y, Para que no se aplique gravedad -> (0,0)
+
+        **El orden en el que declara cada imagen dentro de una hoja es muy importante; más adelante, cuando cargue una imagen de una 
+        hoja usando un comando como display.newImageRect(), deberá especificar el número del marco en función del orden en el que fue 
+        declarado en la configuración de la hoja.**
+
+graphics.newImageSheet() --> esto acepta el nombre del archivo de imagen para la hoja de imagen ( gameObjects.png) y una referencia a la sheetOptionstabla que acabamos de crear:
+local asteroidTable ={} --> matriz
+
+ship = display.newImageRect( mainGroup, objectSheet, 4, 98, 79 )
+    El primer parámetro especifica el grupo de visualización en el que se colocará el objeto ( mainGroup). (no simplemente en el escenario).
+
+    El segundo parámetro es la referencia a la hoja de imagen que cargamos anteriormente ( objectSheet).
+
+    Dado que el barco es el cuarto fotograma en nuestra configuración de hoja de imagen, lo especificamos 4como el número de fotograma (tercer parámetro).
+
+    Finalmente, como de costumbre, establecemos el ancho y el alto en 98y 79, haciendo coincidir los valores del marco widthy heighten la configuración de la hoja de imagen.
