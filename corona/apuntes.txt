@@ -1,3 +1,5 @@
+BALLOON TAP
+------------------------------------------------
 crear una variable -->  LOCAL
 nombre de la variable --> local = BACKGROUND
 signo '=' --> ASIGNAR VARIABLEÇ
@@ -31,3 +33,21 @@ es el tipo de evento que escuchará Solar2D, en este caso "tap". El segundo par�
 que se debe ejecutar (llamar) cuando ocurre el evento, en este caso la pushBalloon()función que escribimos 
 en la sección anterior. Básicamente, le estamos diciendo a Solar2D que ejecute la pushBalloon()función cada vez 
 que el usuario toque el globo.
+
+
+
+
+
+STAR EXPLORER
+----------------------------------------------
+El build.settingsarchivo proporciona a los dispositivos reales (teléfonos, tabletas, etc.) los detalles 
+que necesitan con respecto a su aplicación. Esto incluye las orientaciones admitidas para la aplicación, 
+nombres de archivos de iconos, complementos para incluir, información especial requerida por los 
+dispositivos y más.
+
+default = "portrait",--> Esta línea especifica que el juego debe comenzar en orientación vertical cuando 
+el usuario carga la aplicación por primera vez.
+
+supported = { "portrait", },-->  Esta línea especifica que la única orientación admitida también es vertical. 
+Eso significa que incluso si el usuario gira (orienta) el dispositivo físico en sus manos, su aplicación 
+permanecerá bloqueada en orientación vertical.
