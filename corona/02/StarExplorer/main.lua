@@ -79,3 +79,11 @@ ship.x = display.contentCenterX
 ship.y = display.contentHeight - 100
 physics.addBody( ship, { radius=30, isSensor=true } )
 ship.myName = "ship"
+
+--VIDA Y PUNTUACIÓN
+livesText = display.newText(uiGroup, "Lives: " .. lives, 200, 80, native.systemFont, 36);
+scoreText = display.newText(uiGroup, "Score: " .. score, 550, 80, native.systemFont, 36);
+local function updateText() --actualizar 
+      livesText.text = "Lives: " .. lives
+      scoreText.text = "Score: " .. score
+end

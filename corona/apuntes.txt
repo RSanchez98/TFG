@@ -87,3 +87,5 @@ ship = display.newImageRect( mainGroup, objectSheet, 4, 98, 79 )
     Dado que el barco es el cuarto fotograma en nuestra configuración de hoja de imagen, lo especificamos 4como el número de fotograma (tercer parámetro).
 
     Finalmente, como de costumbre, establecemos el ancho y el alto en 98y 79, haciendo coincidir los valores del marco widthy heighten la configuración de la hoja de imagen.
+
+concatenación --> ..
