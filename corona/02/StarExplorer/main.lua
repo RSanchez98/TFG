@@ -57,7 +57,7 @@ local lives = 3
 local score = 0
 local died = false
 
-local asteroidTable ={}
+local asteroidsTable ={}
 
 local ship
 local gameLoopTimer
@@ -91,29 +91,27 @@ end
 --CREAR ASTEROIDES
 local function createAsteroid()
     local newAsteroid = display.newImageRect(mainGroup, objectSheet, 1, 102, 85)
-    table.insert(asteroidTable, newAsteroid)
+    table.insert(asteroidsTable, newAsteroid)
     physics.addBody(newAsteroid,"dynamic",{radius=40, bounce=0.8})
     newAsteroid.myName = "asteroid"
 
     --generar ubicación ateroides(derecha izquierda arriba)
     local whereFrom = math.random(3)
-        if (whereFrom == 1)  then
-            --izquierda
-            newAsteroid.x = -60
-            newAsteroid.y = math.random(500)
-            newAsteroid:setLinearVelocity(math.random(4,120), math.random(20,60))
-
-        elseif(whereFrom == 2) then
-            --arriba
-            newAsteroid.x = math.random(display.contentWidth)
-            newAsteroid.y = -60
-            newAsteroid.setLinearVelocity(math.random(-40, 40), math.random(40,120))
-
-        elseif(whereFrom == 3) then
-            --derecha
-            newAsteroid.x = display.contentWidth +60
-            newAsteroid.y = math.random(500)
-            newAsteroid:setLinearVelocity( math.random( -120,-40 ), math.random( 20,60 ) )
+        if ( whereFrom == 1 ) then
+        -- From the left
+        newAsteroid.x = -60
+        newAsteroid.y = math.random( 500 )
+        newAsteroid:setLinearVelocity( math.random( 40,120 ), math.random( 20,60 ) )
+    elseif ( whereFrom == 2 ) then
+        -- From the top
+        newAsteroid.x = math.random( display.contentWidth )
+        newAsteroid.y = -60
+        newAsteroid:setLinearVelocity( math.random( -40,40 ), math.random( 40,120 ) )
+    elseif ( whereFrom == 3 ) then
+        -- From the right
+        newAsteroid.x = display.contentWidth + 60
+        newAsteroid.y = math.random( 500 )
+        newAsteroid:setLinearVelocity( math.random( -120,-40 ), math.random( 20,60 ) )
     end
     newAsteroid:applyTorque(math.random(-6,6))
 end
@@ -163,3 +161,22 @@ local function dragShip(event)
 
 end
 ship:addEventListener("touch", dragShip)
+
+--BUCLE DEL JUEGO
+function gameLoop()
+      createAsteroid()
+
+      for i = #asteroidsTable, 1, -1 do
+        local thisAsteroid = asteroidsTable[i]
+ 
+        if (thisAsteroid.x < -100 or
+            thisAsteroid.x > display.contentWidth + 100 or
+            thisAsteroid.y < -100 or
+            thisAsteroid.y > display.contentHeight + 100)
+        then
+            display.remove( thisAsteroid )
+            table.remove( asteroidsTable, i )
+        end
+    end
+end
+gameLoopTimer = timer.performWithDelay(500, gameLoop, 0)
