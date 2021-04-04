@@ -96,3 +96,7 @@ object:setLinearVelocity()requiere simplemente dos números que indican la veloc
 estamos usando aquí es math.random()aleatorizar los valores para que cada asteroide se mueva en una dirección ligeramente diferente.
 
 cantidad de elementos de una table --> #asteroidsTable
+
+require() --> le dice a Corona que cargue toda la información sobre la biblioteca de administración de escenas de Composer en la aplicación.
+
+composer.gotoScene()-->comando para decirle a Corona que cargue una escena diferente.
