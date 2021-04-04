@@ -41,4 +41,7 @@ function scene:create(event)
     -- vidas y puntuacion
     livesText = display.newText( uiGroup, "Lives: " .. lives, 200, 80, native.systemFont, 36 )
     scoreText = display.newText( uiGroup, "Score: " .. score, 400, 80, native.systemFont, 36 )
+
+	ship:addEventListener("tap", fireLaser)
+	ship:addEventListener("tap", dragShip)
 end
