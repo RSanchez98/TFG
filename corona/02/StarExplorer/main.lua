@@ -7,7 +7,7 @@
 local composer = require("composer");
 
 --barra de estado
-display.statusBar (display.hiddenStatusBar)
+display.setStatusBar (display.hiddenStatusBar)
 
 --generador de numeros aleatorios
 math.randomseed(os.time());
