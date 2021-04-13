@@ -183,8 +183,8 @@ end
 
 
 local function endGame()
-	composer.setVariable("finalScore",score); --recuperamos el valor de la escena de punajes altos
-	composer.gotoScene("highscores",{time=800, effect="crossFire"}); --redirige la aplicación a highscores.lua en lugar de la escena del menú
+	composer.setVariable( "finalScore", score )
+	composer.gotoScene( "highscores", { time=800, effect="crossFade" } )
 end
 
 
