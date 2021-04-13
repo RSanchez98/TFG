@@ -183,7 +183,8 @@ end
 
 
 local function endGame()
-	composer.gotoScene( "menu", { time=800, effect="crossFade" } )
+	composer.setVariable("finalScore",score);
+	composer.gotoScene("highscores",{time=800, effect="crossFire"});
 end
 
 
