@@ -67,6 +67,10 @@ local backGroup
 local mainGroup
 local uiGroup
 
+--add sounds
+local explosionSound
+local fireSound
+
 
 local function updateText()
 	livesText.text = "Lives: " .. lives
@@ -105,6 +109,8 @@ end
 
 
 local function fireLaser()
+	--play fire sound
+	audio.play( fireSound );
 
 	local newLaser = display.newImageRect( mainGroup, objectSheet, 5, 14, 40 )
 	physics.addBody( newLaser, "dynamic", { isSensor=true } )
@@ -202,6 +208,9 @@ local function onCollision( event )
 			display.remove( obj1 )
 			display.remove( obj2 )
 
+			-- play explosion sound
+			audio.play( explosionSound );
+
 			for i = #asteroidsTable, 1, -1 do
 				if ( asteroidsTable[i] == obj1 or asteroidsTable[i] == obj2 ) then
 					table.remove( asteroidsTable, i )
@@ -218,6 +227,9 @@ local function onCollision( event )
 		then
 			if ( died == false ) then
 				died = true
+
+				--play explosion sound
+				audio.play( explosionSound )
 
 				-- Update lives
 				lives = lives - 1
@@ -275,6 +287,10 @@ function scene:create( event )
 
 	ship:addEventListener( "tap", fireLaser )
 	ship:addEventListener( "touch", dragShip )
+
+	--add sound
+	explosionSound = audio.loadSound( "audio/explosion.wav" )
+	fireSound = audio.loadSound( "audio/fire.wav" )
 end
 
 
