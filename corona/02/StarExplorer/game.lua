@@ -70,6 +70,7 @@ local uiGroup
 --add sounds
 local explosionSound
 local fireSound
+local musicTrack
 
 
 local function updateText()
@@ -291,6 +292,7 @@ function scene:create( event )
 	--add sound
 	explosionSound = audio.loadSound( "audio/explosion.wav" )
 	fireSound = audio.loadSound( "audio/fire.wav" )
+	musicTrack = audio.loadSound( "audio/80s-Space-Game_Looping.wav" );
 end
 
 
@@ -308,6 +310,9 @@ function scene:show( event )
 		physics.start()
 		Runtime:addEventListener( "collision", onCollision )
 		gameLoopTimer = timer.performWithDelay( 500, gameLoop, 0 )
+
+		-- empieza la musica de fondo (loops=-1 --> indefinidamente)
+		audio.play(musicTrack, {channel=1, loops=-1});
 	end
 end
 
@@ -326,6 +331,10 @@ function scene:hide( event )
 		-- Code here runs immediately after the scene goes entirely off screen
 		Runtime:removeEventListener( "collision", onCollision )
 		physics.pause()
+
+		--parar musica
+		audio.stop(1)
+		
 		composer.removeScene( "game" )
 	end
 end
