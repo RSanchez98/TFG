@@ -334,7 +334,7 @@ function scene:hide( event )
 
 		--parar musica
 		audio.stop(1)
-		
+
 		composer.removeScene( "game" )
 	end
 end
@@ -346,6 +346,11 @@ function scene:destroy( event )
 	local sceneGroup = self.view
 	-- Code here runs prior to the removal of scene's view
 
+	--desechar audio porque composer no administra ni limpia automaticamente
+	audio.dispose( explosionSound )
+	audio.dispose( fireSound )
+	audio.dispose( musicTrack )
+	
 end
 
 
