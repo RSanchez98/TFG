@@ -37,6 +37,44 @@ Mapa.prototype.iniciarCapas = function(datosCapas)
     }
 }
 
+Mapa.prototype.iniciarRejilla = function()
+{
+    var anchoMapaPixeles = this.anchoMedidoEnTiles * this.altoDeLosTiles;
+    var altoMapaPixeles = this.altoMedidoEnTiles * this.anchoDeLosTiles;
+
+    var html = "";
+
+    for(ct = 0; ct < this.capasTiles.length; ct++) //ct --> capatiles
+    {
+        for(t = 0; t < this.capasTiles[ct].length; t++) //t --> tiles
+        {
+            if(this.capasTiles[ct].tiles[t] == null)
+            {
+                continue;
+            }
+            var tileActual = this.capasTiles[ct].tiles[t];
+            html += tileActual.html;
+        }
+    }
+
+    document.getElementById("mapa").innerHTML = html;
+
+    for(ct = 0; ct < this.capasTiles.length; ct++) 
+    {
+        for(t = 0; t < this.capasTiles[ct].length; t++)
+        {
+            if(this.capasTiles[ct].tiles[t] == null)
+            {
+                continue;
+            }
+            var tileActual = this.capasTiles[ct].tiles[t];
+            tileActual.aplicarEstilos();
+        }
+    }
+
+    document.getElementsByTagName("body")[0].style.overflow = "hidden";
+}
+
 Mapa.prototype.actualizar = function()
 {
 
