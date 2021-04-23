@@ -3,6 +3,7 @@
 
     $fuentesJavascript = array
     (
+        "js/listadoEstado.js",
         "js/Rectangulo.js", 
         "js/Punto.js",
         "js/Sprite.js",

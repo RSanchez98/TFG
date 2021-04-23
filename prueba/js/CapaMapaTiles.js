@@ -1,4 +1,4 @@
-function capaMapaTiles(datosCapa, indiceZ, anchoDeLosTiles, paletaSprites)
+function capaMapaTiles(datosCapa, indiceZ, anchoDeLosTiles, paletasSprites)
 {
     this.anchoEnTiles = parseInt(datosCapa.width);
     this.altoEnTiles = parseInt(datosCapa.height);
@@ -17,7 +17,7 @@ function capaMapaTiles(datosCapa, indiceZ, anchoDeLosTiles, paletaSprites)
             }
             else
             {
-                var spriteActual = this.encontrarSpriteEnPaletaPorId(idSpriteAcutalSobreUno - 1, paletaSprites);
+                var spriteActual = this.encontrarSpriteEnPaletaPorId(idSpriteAcutalSobreUno - 1, paletasSprites);
 
                 this.tiles.push(new Tile(x, y, indiceZ, anchoDeLosTiles, altoDeLosTiles, spriteActual));
             }
