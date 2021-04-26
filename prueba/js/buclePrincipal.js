@@ -32,10 +32,7 @@ var buclePrincipal =
 	actualizar: function(registroTemporal) //cada vez que pulsamos una tecla, esta se guarda en un array en el teclado, y luego podemos preguntarle al teclado 'que teclas tiene guardadas en el array' para saber que teclas ha pulsado el usuario en este ciclo de acutalización
 	{
 		mando.actualizar();
-		controles.actualizar();
 		maquinaEstados.actualizar();
-		teclado.reiniciar();
-		controles.reiniciar();
 		buclePrincipal.aps++;
 	},
 	dibujar: function(registroTemporal) 
