@@ -1,7 +1,6 @@
-function EstadoMapamundi(idEstado)
-{
-    var that = this; // this representa el objeto actual, y en este contexto, this representa el objeto "mapamundi"
-    this.mapaListo = false;
+function EstadoMapamundi(idEstado) {
+	var that = this;
+	this.mapaListo = false;
 	this.mapa = null;
 	ajax.cargarArchivo("mapas/desierto48.json", function(objetoJSON) {
 		that.mapa = new Mapa(objetoJSON);

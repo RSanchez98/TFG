@@ -41,8 +41,8 @@ Mapa.prototype.iniciarRejilla = function() {
 
 	var html = "";
 
-	for (ct = 0; ct < this.capasTiles.length; ct++) { //ct --> capaTiles
-		for (t = 0; t < this.capasTiles[ct].tiles.length; t++) { //t --> tiles
+	for (ct = 0; ct < this.capasTiles.length; ct++) {
+		for (t = 0; t < this.capasTiles[ct].tiles.length; t++) {
 			if (this.capasTiles[ct].tiles[t] == null) {
 				continue;
 			}

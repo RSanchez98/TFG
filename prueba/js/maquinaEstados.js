@@ -5,7 +5,7 @@ var maquinaEstados = {
 	},
 	cambiarEstado: function(nuevoEstado) {
 		switch(nuevoEstado) {
-			case listadoEstados.CARGANDO: //estado acutal : cargando
+			case listadoEstados.CARGANDO:
 				break;
 			case listadoEstados.MENU_INICIAL:
 				break;
