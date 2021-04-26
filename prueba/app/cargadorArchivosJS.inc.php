@@ -3,18 +3,21 @@
 
     $fuentesJavascript = array
     (
-        "js/listadoEstado.js",
         "js/Rectangulo.js", 
-        "js/Punto.js",
         "js/Sprite.js",
-        "js/PaletasSprites.js",
         "js/Tile.js",
         "js/CapaMapaTiles.js",
+        "js/PaletasSprites.js",
+        "js/listadoEstado.js",
         "js/ajax.js", 
+        "js/EstadoMapamundi.js",
+        "js/maquinaEstados.js",
+        "js/Punto.js",
+        "js/Mapa.js",
         "js/teclado.js", 
         "js/mando.js", 
-        "js/buclePrincipal.js", 
         "js/dimensiones.js", 
+        "js/buclePrincipal.js", 
         "js/inicio.js"
     );
     foreach($fuentesJavascript as $fuente)

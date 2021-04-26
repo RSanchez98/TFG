@@ -1,33 +1,30 @@
 //DOM == DOCUMENT OBJECT MODEL
 //Cunando se cargue el documento, ejecucta "function"
-document.addEventListener('DOMContentLoaded', function()
-{
-   inicio.iniciarJuego();
-}, false);
 
 
 var inicio =
 {
+    iniciadores: //array de funciones en el orden en el que queremos que se ejecute
+    [
+        maquinaEstados.iniciar(),
+		teclado.iniciar(),
+		mando.iniciar(),
+		buclePrincipal.iterar()
+    ],
     iniciarJuego: function()
     {
-        console.log("JUEGO INICIADO");
-        ajax.cargarArchivo("mapas/desierto.json")
-        teclado.iniciar();
-        dimensiones.iniciar();
-        mando.iniciar();
-        inicio.recargarTiles();
-        buclePrincipal.iterar();
+        inicio.encadenarInicios(inicio.iniciadores.shift()); //shift devuelve el primer elemento y luego lo borra del array
     },
-    recargarTiles: function()  // borrar el contenido del div juego y llenarlo de rectangulos
+    encadenarInicios: function(iniciador) 
     {
-        document.getElementById("juego").innerHTML = "";
-        for(var y = 0; y < dimensiones.obtenerTilesVerticales(); y++)
+		if(iniciador) 
         {
-            for(var x = 0; x < dimensiones.obtenerTilesTotales(); x++)
-            {
-                var r = new Rectangulo(x * dimensiones.ladoTiles, y * dimensiones.ladoTiles, 
-                    dimensiones.ladoTiles, dimensiones.ladoTiles);
-            }
-        }
-    }
+			iniciador(() => inicio.encadenarInicios(iniciadores.shift()));
+		}
+	}
 };
+
+document.addEventListener('DOMContentLoaded', function() 
+{
+	inicio.iniciarJuego();
+}, false);

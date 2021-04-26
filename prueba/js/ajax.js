@@ -1,36 +1,35 @@
-var ajax = 
-{
-    cargarArchivo: function(ruta)
+var ajax = {
+	cargarArchivo: function(ruta, manipularDatos) 
     {
-        var peticion = new XMLHttpRequest();
+		var peticion = new XMLHttpRequest();
 
-        peticion.onreadystatechange = function()
+		peticion.onreadystatechange = function() 
         {
-            /*
-            ESTADO DE LA PETICION
-            0 o UNSET - no iniciada
-            1 o OPENED - conectado al servidor
-            2 o HEADERS_RECIVED - peticion recibida
-            3 o LOADING - procesando petición
-            4 o DONE - petición finalizada, respuesta preparada
-            */
-            if(peticion.readyState == XMLHttpRequest.DONE)
+			/*
+			0 / UNSENT - no iniciada
+			1 / OPENED - conectado al servidor
+			2 / HEADERS_RECIEVED - peticion recbida
+			3 / LOADING - procesando peticion
+			4 / DONE - peticion finalizada, respuesta preparada
+			*/
+			if (peticion.readyState == XMLHttpRequest.DONE) 
             {
-                if(peticion.status == 200) //codigo que significa que todo ha ido bien
-                {   
-                    console.log(JSON.parse(peticion.responseText)); //la respuesta la convertimos a json
-                }
-                else if(peticion.status == 400)
+				if (peticion.status == 200) //codigo que significa que todo ha ido bien
                 {
-                    console.log("error")
-                }
-                else
+					manipularDatos(JSON.parse(peticion.responseText));//la respuesta la convertimos a json
+				} 
+                else if (peticion.status == 400) 
                 {
-                    console.log("restulado inesperado")
-                }
-            }
-        };
-        peticion.open("GET", ruta, true);
-        peticion.send();
-    }   
+					console.log("error");
+				} 
+                else 
+                {
+					console.log("resultado inesperado");
+				}
+			}
+		};
+
+		peticion.open("GET", ruta, true);
+		peticion.send();
+	}
 }
