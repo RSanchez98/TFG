@@ -44,4 +44,6 @@ JugadorMapamundi.prototype.actualizar = function(registroTemporal)
     {
 		this.posicionEnMapaEnPixeles.x -= this.velocidadMovimiento;
 	}
+
+	// console.log(this.posicionCentrada.x + ", "+ this.posicionCentrada.y);
 }

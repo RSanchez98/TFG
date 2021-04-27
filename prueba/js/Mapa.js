@@ -1,4 +1,5 @@
-function Mapa(objetoJSON) {
+function Mapa(objetoJSON) 
+{
 	this.posicion = new Punto(0,0);
 	this.posicionActualizada = new Punto(0,0);
 
@@ -16,13 +17,15 @@ function Mapa(objetoJSON) {
 	this.iniciarRejilla();
 }
 
-Mapa.prototype.iniciarPaletasSprites = function(datosCapas) {
+Mapa.prototype.iniciarPaletasSprites = function(datosCapas) 
+{
 	for (i = 0; i < datosCapas.length; i++) {
 		this.paletasSprites.push(new PaletaSprites(datosCapas[i]));
 	}
 }
 
-Mapa.prototype.iniciarCapas = function(datosCapas) {
+Mapa.prototype.iniciarCapas = function(datosCapas) 
+{
 	for (i = 0; i < datosCapas.length; i++) {
 		switch(datosCapas[i].type) {
 			case "tilelayer":
@@ -35,15 +38,19 @@ Mapa.prototype.iniciarCapas = function(datosCapas) {
 	}
 }
 
-Mapa.prototype.iniciarRejilla = function() {
+Mapa.prototype.iniciarRejilla = function() 
+{
 	var anchoMapaEnPixeles = this.anchoMedidoEnTiles * this.anchoDeLosTiles;
 	var altoMapaEnPixeles = this.altoMedidoEnTiles * this.altoDeLosTiles;
 
 	var html = "";
 
-	for (ct = 0; ct < this.capasTiles.length; ct++) {
-		for (t = 0; t < this.capasTiles[ct].tiles.length; t++) {
-			if (this.capasTiles[ct].tiles[t] == null) {
+	for (ct = 0; ct < this.capasTiles.length; ct++) 
+	{
+		for (t = 0; t < this.capasTiles[ct].tiles.length; t++) 
+		{
+			if (this.capasTiles[ct].tiles[t] == null) 
+			{
 				continue;
 			}
 			var tileActual = this.capasTiles[ct].tiles[t];
@@ -55,7 +62,8 @@ Mapa.prototype.iniciarRejilla = function() {
 
 	for (ct = 0; ct < this.capasTiles.length; ct++) {
 		for (t = 0; t < this.capasTiles[ct].tiles.length; t++) {
-			if (this.capasTiles[ct].tiles[t] == null) {
+			if (this.capasTiles[ct].tiles[t] == null) 
+			{
 				continue;
 			}
 			var tileActual = this.capasTiles[ct].tiles[t];
@@ -79,5 +87,18 @@ Mapa.prototype.dibujar = function()
 		{
 			this.capasTiles[c].tiles[i].mover(this.posicion.x, this.posicion.y);
 		}
+	}
+
+	var r1 = new Rectangulo(this.posicion.x, this.posicion.y, (this.anchoMedidoEnTiles*this.anchoDeLosTiles), (this.altoMedidoEnTiles*this.altoDeLosTiles));
+
+	var r2 = new Rectangulo(463,459,48,48);
+
+	if(r1.cruza(r2))
+	{
+		console.log("Se están cruzando");
+	}
+	else
+	{
+		console.log("Sin contacto");
 	}
 }
