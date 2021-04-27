@@ -7,15 +7,16 @@ function EstadoMapamundi(idEstado) {
 		that.mapa = new Mapa(objetoJSON);
 		that.mapaListo = true;
 		that.jugadorMapamundi = new JugadorMapamundi(new Punto(0,0));
-		console.log("mapa cargado por AJAX");
+		console.log("Mapa cargado por AJAX");
 	});
 }
 
-EstadoMapamundi.prototype.actualizar = function() {
+EstadoMapamundi.prototype.actualizar = function(registroTemporal) {
 	if (!this.mapaListo) {
 		return;
 	}
-	this.mapa.actualizar();
+	this.jugadorMapamundi.actualizar(registroTemporal);
+	this.mapa.actualizar(registroTemporal, this.jugadorMapamundi.posicionEnMapaEnPixeles);
 }
 
 EstadoMapamundi.prototype.dibujar = function() {

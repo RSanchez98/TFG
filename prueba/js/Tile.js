@@ -1,4 +1,5 @@
-function Tile(xEnTiles, yEnTiles, z, ancho, alto, sprite) {
+function Tile(xEnTiles, yEnTiles, z, ancho, alto, sprite) 
+{
 	this.rectangulo = new Rectangulo(xEnTiles, yEnTiles, ancho, alto);
 	this.zIndex = z;
 	this.sprite = sprite;
@@ -6,7 +7,8 @@ function Tile(xEnTiles, yEnTiles, z, ancho, alto, sprite) {
 	this.html = '<div id="' + this.idHTML + '"></div>';
 }
 
-Tile.prototype.aplicarEstilos = function() {
+Tile.prototype.aplicarEstilos = function() 
+{
 	if (!document.getElementById(this.idHTML)) {
 		throw("El ID " + this.idHTML + " no existe en la hoja");
 	}
@@ -26,3 +28,8 @@ Tile.prototype.aplicarEstilos = function() {
 	document.getElementById(this.idHTML).style.backgroundClip = "border-box";
 	document.getElementById(this.idHTML).style.outline = "1px solid transparent";
 } 
+
+Tile.prototype.mover = function(x, y)
+{
+	document.getElementById(this.idHTML).style.transform = 'translate3d(' + x + 'px,' + y + 'px, 0)';
+}
