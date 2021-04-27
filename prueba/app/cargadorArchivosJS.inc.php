@@ -2,8 +2,11 @@
 
 $fecha = new DateTime();
 
-$fuentesJavascript = array(
+$fuentesJavascript = array
+(
+	"js/dimensiones.js",
 	"js/Rectangulo.js",
+	"js/JugadorMapamundi.js",
 	"js/Sprite.js",
 	"js/Tile.js",
 	"js/CapaMapaTiles.js",
@@ -17,12 +20,12 @@ $fuentesJavascript = array(
 	"js/teclado.js",
 	"js/controlesTeclado.js",	
 	"js/mando.js",
-	"js/dimensiones.js",
 	"js/buclePrincipal.js",
 	"js/inicio.js"
 );
 
-foreach($fuentesJavascript as $fuente) {
+foreach($fuentesJavascript as $fuente) 
+{
 	echo '<script src="' . $fuente . '?' . $fecha -> getTimestamp() . '"></script>';
 	echo nl2br("\n");
 }

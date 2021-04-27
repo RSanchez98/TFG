@@ -4,6 +4,7 @@ var inicio =
 {
 	iniciadores: 
 	[
+		dimensiones.iniciar(),
 		maquinaEstados.iniciar(),
 		teclado.iniciar(),
 		mando.iniciar(),
