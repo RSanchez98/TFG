@@ -6,7 +6,7 @@ function EstadoMapamundi(idEstado) {
 	ajax.cargarArchivo("mapas/desierto48.json", function(objetoJSON) {
 		that.mapa = new Mapa(objetoJSON);
 		that.mapaListo = true;
-		that.jugadorMapamundi = new JugadorMapamundi(new Punto(0,0));
+		that.jugadorMapamundi = new JugadorMapamundi(new Punto(150,250));
 		console.log("Mapa cargado por AJAX");
 	});
 }

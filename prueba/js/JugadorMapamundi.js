@@ -5,11 +5,15 @@ function JugadorMapamundi(posicionInicialEnPixeles)
 
 	this.velocidadMovimiento = 2;
 
-	var centroX = dimensiones.ancho / 2 - this.ancho / 2;
-	var centroY = dimensiones.alto / 2 - this.alto / 2;
+	var centroX = Math.trunc(dimensiones.ancho / 2 - this.ancho / 2); //--> trunca el tamaño de los pixeles apra que no haya 'medios pixeles' porque si no genera una cuadricula blanca para simular esos pixeles
+	var centroY = Math.trunc(dimensiones.alto / 2 - this.alto / 2); //--> trunca el tamaño de los pixeles apra que no haya 'medios pixeles' porque si no genera una cuadricula blanca para simular esos pixeles
 	this.posicionCentrada = new Punto(centroX, centroY); //clase que conteiene una X y una Y, puede colocar algo en una coordenada 2D, y es capaz de compararse con otro punto para ver si están en el mimso punto
 
-	this.posicionEnMapaEnPixeles = posicionInicialEnPixeles;
+	posicionInicialEnPixeles.x *=-1 
+	posicionInicialEnPixeles.y *=-1
+
+	// this.posicionEnMapaEnPixeles = posicionInicialEnPixeles; --> mapa siempre pegado arriba a la izquierda
+	this.posicionEnMapaEnPixeles = new Punto(this.posicionCentrada.x + posicionInicialEnPixeles.x , this.posicionCentrada.y + posicionInicialEnPixeles.y); 
 
 	this.aplicarEstilos();
 }

@@ -93,12 +93,12 @@ Mapa.prototype.dibujar = function()
 
 	var r2 = new Rectangulo(463,459,48,48);
 
-	if(r1.cruza(r2))
-	{
-		console.log("Se están cruzando");
-	}
-	else
-	{
-		console.log("Sin contacto");
-	}
+	// if(r1.cruza(r2))
+	// {
+	// 	console.log("Se están cruzando");
+	// }
+	// else
+	// {
+	// 	console.log("Sin contacto");
+	// }
 }
