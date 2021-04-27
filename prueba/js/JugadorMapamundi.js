@@ -36,21 +36,21 @@ JugadorMapamundi.prototype.aplicarEstilos = function()
 	document.getElementById(idHTML).style.zIndex = "10"; //ordena en qué posición está cada cosa, con un 10 nos asegurameos que el jugado siempre está en una capa mas alta que las demás (si un juego 2D tiene muchas capas, es indicio de que algo estamos haciendo mal, porque son demasiadas)    
 }
 
-JugadorMapamundi.prototype.actualizar = function(registroTemporal) 
+JugadorMapamundi.prototype.actualizar = function(registroTemporal, mapa) 
 {
-	if(teclado.teclaPulsada(controlesTeclado.arriba)) 
+	if(teclado.teclaPulsada(controlesTeclado.arriba) && this.limiteArriba.cruza(mapa.limiteMapa)) 
     {
 		this.posicionEnMapaEnPixeles.y += this.velocidadMovimiento;
 	}
-	if(teclado.teclaPulsada(controlesTeclado.abajo)) 
+	if(teclado.teclaPulsada(controlesTeclado.abajo) && this.limiteAbajo.cruza(mapa.limiteMapa)) 
     {
 		this.posicionEnMapaEnPixeles.y -= this.velocidadMovimiento;
 	}
-	if(teclado.teclaPulsada(controlesTeclado.izquierda)) 
+	if(teclado.teclaPulsada(controlesTeclado.izquierda) && this.limiteIzquierda.cruza(mapa.limiteMapa)) 
     {
 		this.posicionEnMapaEnPixeles.x += this.velocidadMovimiento;
 	}
-	if(teclado.teclaPulsada(controlesTeclado.derecha)) 
+	if(teclado.teclaPulsada(controlesTeclado.derecha) && this.limiteDerecha.cruza(mapa.limiteMapa)) 
     {
 		this.posicionEnMapaEnPixeles.x -= this.velocidadMovimiento;
 	}
