@@ -102,10 +102,10 @@ Mapa.prototype.iniciarRejilla = function()
 		}
 	}
 
-	for (c = 0; c < this.rectangulosColisiones.length; c++) 
-	{
-		this.rectangulosColisiones[c].aplicarEstiloTemporal();
-	}
+	// for (c = 0; c < this.rectangulosColisiones.length; c++) 
+	// {
+	// 	this.rectangulosColisiones[c].aplicarEstiloTemporal();
+	// }
 
 	document.getElementsByTagName("body")[0].style.overflow = "hidden";
 }
@@ -129,8 +129,8 @@ Mapa.prototype.dibujar = function()
 		}
 	}
 
-	for(rc = 0; rc < this.rectangulosColisiones.length; rc++)
-	{
-		this.rectangulosColisiones[rc].mover(this.posicion.x, this.posicion.y);
-	}
+	// for(rc = 0; rc < this.rectangulosColisiones.length; rc++)
+	// {
+	// 	this.rectangulosColisiones[rc].mover(this.posicion.x, this.posicion.y);
+	// }
 }

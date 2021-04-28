@@ -36,24 +36,81 @@ JugadorMapamundi.prototype.aplicarEstilos = function()
 	document.getElementById(idHTML).style.zIndex = "10"; //ordena en qué posición está cada cosa, con un 10 nos asegurameos que el jugado siempre está en una capa mas alta que las demás (si un juego 2D tiene muchas capas, es indicio de que algo estamos haciendo mal, porque son demasiadas)    
 }
 
-JugadorMapamundi.prototype.actualizar = function(registroTemporal, mapa) 
+JugadorMapamundi.prototype.comprobarColisiones = function(mapa)
 {
-	if(teclado.teclaPulsada(controlesTeclado.arriba) && this.limiteArriba.cruza(mapa.limiteMapa)) 
-    {
+	var colisionArriba = false;
+	var colisionAbajo = false;
+	var colisionIzquierda = false;
+	var colisionDerecha = false;
+
+	//COMPROBAMOS SI ESTAMOS DENTRO DEL MAPA
+	if (!this.limiteArriba.cruza(mapa.limiteMapa)) 
+	{
+		colisionArriba = true;
+	}
+	if (!this.limiteAbajo.cruza(mapa.limiteMapa)) 
+	{
+		colisionAbajo = true;
+	}
+	if (!this.limiteIzquierda.cruza(mapa.limiteMapa)) 
+	{
+		colisionIzquierda = true;
+	}
+	if (!this.limiteDerecha.cruza(mapa.limiteMapa)) 
+	{
+		colisionDerecha = true;
+	}
+
+	//COMPROBAMOS QUE NO HAY RECTANGULOS EN MEDIO
+	for (var i = 0; i < mapa.rectangulosColisiones.length; i++) 
+	{
+		
+		var traduccionTemporalColision = new Rectangulo(
+			mapa.rectangulosColisiones[i].x + mapa.posicion.x,
+			mapa.rectangulosColisiones[i].y + mapa.posicion.y,
+			mapa.rectangulosColisiones[i].ancho,
+			mapa.rectangulosColisiones[i].alto
+		);
+		
+		if(this.limiteArriba.cruza(traduccionTemporalColision)) 
+		{
+			colisionArriba = true;
+		}
+		if(this.limiteAbajo.cruza(traduccionTemporalColision)) 
+		{
+			colisionAbajo = true;
+		}
+		if(this.limiteIzquierda.cruza(traduccionTemporalColision)) 
+		{
+			colisionIzquierda = true;
+		}
+		if(this.limiteDerecha.cruza(traduccionTemporalColision)) 
+		{
+			colisionDerecha = true;
+		}
+	}
+
+	//PERMITIMOS O NO EL MOVIMIENTO	
+	if(!colisionArriba && teclado.teclaPulsada(controlesTeclado.arriba)) 
+	{
 		this.posicionEnMapaEnPixeles.y += this.velocidadMovimiento;
 	}
-	if(teclado.teclaPulsada(controlesTeclado.abajo) && this.limiteAbajo.cruza(mapa.limiteMapa)) 
-    {
+	if(!colisionAbajo && teclado.teclaPulsada(controlesTeclado.abajo)) 
+	{
 		this.posicionEnMapaEnPixeles.y -= this.velocidadMovimiento;
 	}
-	if(teclado.teclaPulsada(controlesTeclado.izquierda) && this.limiteIzquierda.cruza(mapa.limiteMapa)) 
-    {
+	if(!colisionIzquierda && teclado.teclaPulsada(controlesTeclado.izquierda)) 
+	{
 		this.posicionEnMapaEnPixeles.x += this.velocidadMovimiento;
 	}
-	if(teclado.teclaPulsada(controlesTeclado.derecha) && this.limiteDerecha.cruza(mapa.limiteMapa)) 
-    {
+	if(!colisionDerecha && teclado.teclaPulsada(controlesTeclado.derecha)) 
+	{
 		this.posicionEnMapaEnPixeles.x -= this.velocidadMovimiento;
 	}
 
-	// console.log(this.posicionCentrada.x + ", "+ this.posicionCentrada.y);
+}
+
+JugadorMapamundi.prototype.actualizar = function(registroTemporal, mapa) 
+{
+	this.comprobarColisiones(mapa);
 }
