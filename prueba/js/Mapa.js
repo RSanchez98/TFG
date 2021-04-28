@@ -13,6 +13,8 @@ function Mapa(objetoJSON)
 
 	this.rectangulosColisiones = [];
 
+	this.rectangulosLocalizaciones = [];
+
 	this.capasTiles = [];
 	this.iniciarCapas(objetoJSON.layers);
 
@@ -52,6 +54,13 @@ Mapa.prototype.iniciarCapas = function(datosCapas)
 					}
 					if(datosCapas[i].name == "localizaciones")
 					{
+						for(l = 0; l < datosCapas[i].objects.length; l++)
+						{
+							this.rectangulosLocalizaciones.push(new Rectangulo(
+								datosCapas[i].objects[l].x , datosCapas[i].objects[l].y, 
+								datosCapas[i].objects[l].width, datosCapas[i].objects[l].height));
+
+						}
 						console.log("capa de localizaciones");
 					}
 				break;
@@ -86,8 +95,16 @@ Mapa.prototype.iniciarRejilla = function()
 	{
 		htmlColisiones += this.rectangulosColisiones[c].html;
 	}
-
 	document.getElementById("colisiones").innerHTML = htmlColisiones;
+
+
+	var htmlLocalizaciones = "";
+	for (l = 0; l < this.rectangulosLocalizaciones.length; l++)
+	{
+		htmlLocalizaciones += this.rectangulosLocalizaciones[l].html;
+	}
+	document.getElementById("localizaciones").innerHTML = htmlLocalizaciones;
+
 
 	for (ct = 0; ct < this.capasTiles.length; ct++) 
 	{
@@ -102,10 +119,17 @@ Mapa.prototype.iniciarRejilla = function()
 		}
 	}
 
-	// for (c = 0; c < this.rectangulosColisiones.length; c++) 
-	// {
-	// 	this.rectangulosColisiones[c].aplicarEstiloTemporal();
-	// }
+	
+
+	for (c = 0; c < this.rectangulosColisiones.length; c++) 
+	{
+		this.rectangulosColisiones[c].aplicarEstiloTemporal();
+	}
+
+	for(l = 0; l <this.rectangulosLocalizaciones.length; l++)
+	{
+		this.rectangulosLocalizaciones[l].aplicarEstiloTemporal();
+	}
 
 	document.getElementsByTagName("body")[0].style.overflow = "hidden";
 }
@@ -129,8 +153,13 @@ Mapa.prototype.dibujar = function()
 		}
 	}
 
-	// for(rc = 0; rc < this.rectangulosColisiones.length; rc++)
-	// {
-	// 	this.rectangulosColisiones[rc].mover(this.posicion.x, this.posicion.y);
-	// }
+	for(rc = 0; rc < this.rectangulosColisiones.length; rc++)
+	{
+		this.rectangulosColisiones[rc].mover(this.posicion.x, this.posicion.y);
+	}
+
+	for (rl = 0; rl <this.rectangulosLocalizaciones.length; rl++)
+	{
+		this.rectangulosLocalizaciones[rl].mover(this.posicion.x, this.posicion.y);
+	}
 }
