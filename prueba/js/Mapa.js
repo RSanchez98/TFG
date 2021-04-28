@@ -11,6 +11,8 @@ function Mapa(objetoJSON)
 	this.paletasSprites = [];
 	this.iniciarPaletasSprites(objetoJSON.tilesets);
 
+	this.rectangulosColisiones = [];
+
 	this.capasTiles = [];
 	this.iniciarCapas(objetoJSON.layers);
 
@@ -21,20 +23,37 @@ function Mapa(objetoJSON)
 
 Mapa.prototype.iniciarPaletasSprites = function(datosCapas) 
 {
-	for (i = 0; i < datosCapas.length; i++) {
+	for (i = 0; i < datosCapas.length; i++) 
+	{
 		this.paletasSprites.push(new PaletaSprites(datosCapas[i]));
 	}
 }
 
 Mapa.prototype.iniciarCapas = function(datosCapas) 
 {
-	for (i = 0; i < datosCapas.length; i++) {
-		switch(datosCapas[i].type) {
+	for (i = 0; i < datosCapas.length; i++) 
+	{
+		switch(datosCapas[i].type) 
+		{
 			case "tilelayer":
 				this.capasTiles.push(new CapaMapaTiles(
 					datosCapas[i], i, this.anchoDeLosTiles, this.altoDeLosTiles, this.paletasSprites));
 				break;
 			case "objectgroup":
+					if(datosCapas[i].name == "colisiones")
+					{
+						for(c = 0; c < datosCapas[i].objects.length; c++)
+						{
+							this.rectangulosColisiones.push(
+								new Rectangulo(datosCapas[i].objects[c].x , datosCapas[i].objects[c].y, 
+									datosCapas[i].objects[c].width, datosCapas[i].objects[c].height )
+							);
+						}
+					}
+					if(datosCapas[i].name == "localizaciones")
+					{
+						console.log("capa de localizaciones");
+					}
 				break;
 		}
 	}
@@ -62,8 +81,18 @@ Mapa.prototype.iniciarRejilla = function()
 
 	document.getElementById("mapa").innerHTML = html;
 
-	for (ct = 0; ct < this.capasTiles.length; ct++) {
-		for (t = 0; t < this.capasTiles[ct].tiles.length; t++) {
+	var htmlColisiones = "";
+	for(c = 0; c < this.rectangulosColisiones.length; c++)
+	{
+		htmlColisiones += this.rectangulosColisiones[c].html;
+	}
+
+	document.getElementById("colisiones").innerHTML = htmlColisiones;
+
+	for (ct = 0; ct < this.capasTiles.length; ct++) 
+	{
+		for (t = 0; t < this.capasTiles[ct].tiles.length; t++) 
+		{
 			if (this.capasTiles[ct].tiles[t] == null) 
 			{
 				continue;
@@ -71,6 +100,11 @@ Mapa.prototype.iniciarRejilla = function()
 			var tileActual = this.capasTiles[ct].tiles[t];
 			tileActual.aplicarEstilos();
 		}
+	}
+
+	for (c = 0; c < this.rectangulosColisiones.length; c++) 
+	{
+		this.rectangulosColisiones[c].aplicarEstiloTemporal();
 	}
 
 	document.getElementsByTagName("body")[0].style.overflow = "hidden";
@@ -93,5 +127,10 @@ Mapa.prototype.dibujar = function()
 		{
 			this.capasTiles[c].tiles[i].mover(this.posicion.x, this.posicion.y);
 		}
+	}
+
+	for(rc = 0; rc < this.rectangulosColisiones.length; rc++)
+	{
+		this.rectangulosColisiones[rc].mover(this.posicion.x, this.posicion.y);
 	}
 }
