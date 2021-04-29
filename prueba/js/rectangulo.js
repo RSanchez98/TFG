@@ -1,10 +1,10 @@
-function Rectangulo(x, y, ancho, alto) 
+function Rectangulo(x, y, ancho, alto, tipo) 
 {
 	this.x = x;
 	this.y = y;
 	this.ancho = ancho;
 	this.alto = alto;
-	this.idHTML = "colision x" + x + "y" + y;
+	this.idHTML = tipo + "x" + x + "y" + y;
 	this.html = '<div id="' + this.idHTML + '"></div>';
 }
 
@@ -16,15 +16,15 @@ Rectangulo.prototype.cruza = function(rectangulo) //si dos rectangulos se han cr
 		this.alto + this.y > rectangulo.y) ? true : false; //true : false --> remplaza if else
 }
 
-Rectangulo.prototype.aplicarEstiloTemporal = function() 
+Rectangulo.prototype.aplicarEstiloTemporal = function(colorHexadecimal) 
 {
 	if (!document.getElementById(this.idHTML)) 
 	{
 		throw("El ID " + this.idHTML + " no existe en la hoja");
 	}
 
-	var color ="#ff0000";
-	document.getElementById(this.idHTML).style.backgroundColor = color;
+	//var color ="#ff0000";
+	document.getElementById(this.idHTML).style.backgroundColor = colorHexadecimal;
 
 	document.getElementById(this.idHTML).style.position = "absolute";
 	document.getElementById(this.idHTML).style.left = this.x + "px";

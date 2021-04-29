@@ -20,7 +20,10 @@ function Mapa(objetoJSON)
 
 	this.iniciarRejilla();
 
-	this.limiteMapa = new Rectangulo(this.posicion.x, this.posicion.y, (this.anchoMedidoEnTiles*this.anchoDeLosTiles), (this.altoMedidoEnTiles*this.altoDeLosTiles));
+	this.limiteMapa = new Rectangulo(this.posicion.x, this.posicion.y, 
+		(this.anchoMedidoEnTiles*this.anchoDeLosTiles), 
+		(this.altoMedidoEnTiles*this.altoDeLosTiles));
+	this.limiteMapa = this.limiteMapa, "colision";//<--
 }
 
 Mapa.prototype.iniciarPaletasSprites = function(datosCapas) 
@@ -48,8 +51,9 @@ Mapa.prototype.iniciarCapas = function(datosCapas)
 						{
 							this.rectangulosColisiones.push(
 								new Rectangulo(datosCapas[i].objects[c].x , datosCapas[i].objects[c].y, 
-									datosCapas[i].objects[c].width, datosCapas[i].objects[c].height )
-							);
+									datosCapas[i].objects[c].width, datosCapas[i].objects[c].height));
+							this.rectangulosLocalizaciones = this.rectangulosLocalizaciones, "colision";//<--
+
 						}
 					}
 					if(datosCapas[i].name == "localizaciones")
@@ -59,8 +63,10 @@ Mapa.prototype.iniciarCapas = function(datosCapas)
 							this.rectangulosLocalizaciones.push(new Rectangulo(
 								datosCapas[i].objects[l].x , datosCapas[i].objects[l].y, 
 								datosCapas[i].objects[l].width, datosCapas[i].objects[l].height));
+							this.rectangulosLocalizaciones = this.rectangulosLocalizaciones ,"localizacion"; //<--
 
 						}
+
 						console.log("capa de localizaciones");
 					}
 				break;
@@ -123,12 +129,12 @@ Mapa.prototype.iniciarRejilla = function()
 
 	for (c = 0; c < this.rectangulosColisiones.length; c++) 
 	{
-		this.rectangulosColisiones[c].aplicarEstiloTemporal();
+		this.rectangulosColisiones[c].aplicarEstiloTemporal("#ff0000");
 	}
 
 	for(l = 0; l <this.rectangulosLocalizaciones.length; l++)
 	{
-		this.rectangulosLocalizaciones[l].aplicarEstiloTemporal();
+		this.rectangulosLocalizaciones[l].aplicarEstiloTemporal("#00ff00");
 	}
 
 	document.getElementsByTagName("body")[0].style.overflow = "hidden";
