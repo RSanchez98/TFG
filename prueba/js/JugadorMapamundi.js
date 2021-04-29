@@ -3,17 +3,36 @@ function JugadorMapamundi(posicionInicialEnPixeles)
 	this.ancho = 48; //sprites de 16 escalado a 48
 	this.alto = 48;
 
+	this.rutaHojaSprites = "img/personajes48.png";
+	this.personaje = 5; //elegir personaje
+
+	this.origenXSprite = 0;
+	this.origenYSprite = this.alto * this.personaje;
+
 	this.velocidadMovimiento = 2;
 
+	this.velocidadX = 0;
+	this.velocidadY = 0;
+
+	this.enMovimiento = false;
+	this.framesAnimacion = 0;
+
+	
 	var centroX = Math.trunc(dimensiones.ancho / 2 - this.ancho / 2); //--> trunca el tamaño de los pixeles apra que no haya 'medios pixeles' porque si no genera una cuadricula blanca para simular esos pixeles
 	var centroY = Math.trunc(dimensiones.alto / 2 - this.alto / 2); //--> trunca el tamaño de los pixeles apra que no haya 'medios pixeles' porque si no genera una cuadricula blanca para simular esos pixeles
 	this.posicionCentrada = new Punto(centroX, centroY); //clase que conteiene una X y una Y, puede colocar algo en una coordenada 2D, y es capaz de compararse con otro punto para ver si están en el mimso punto
+	this.posicionGeneral = new Rectangulo(centroX, centroY, this.ancho, this.alto);
 
 	this.limiteArriba = new Rectangulo(centroX + this.ancho / 3, centroY, this.ancho / 3, 1);
 	this.limiteAbajo = new Rectangulo(centroX + this.ancho / 3, centroY + this.alto - 1, this.ancho / 3, 1);
 	this.limiteIzquierda = new Rectangulo(centroX, centroY + this.alto / 3, 1, this.alto / 3);
 	this.limiteDerecha = new Rectangulo(centroX + this.ancho - 1, centroY + this.alto / 3, 1, this.alto / 3 );
 
+	this.colisionArriba = false;
+	this.colisionAbajo = false;
+	this.colisionIzquierda = false;
+	this.colisionDerecha = false;
+	
 
 	posicionInicialEnPixeles.x *=-1 
 	posicionInicialEnPixeles.y *=-1
@@ -27,13 +46,19 @@ function JugadorMapamundi(posicionInicialEnPixeles)
 JugadorMapamundi.prototype.aplicarEstilos = function() 
 {
 	var idHTML = "jugador";
-	document.getElementById(idHTML).style.backgroundColor = "white";
+	//document.getElementById(idHTML).style.backgroundColor = "white";
 	document.getElementById(idHTML).style.position = "absolute";
 	document.getElementById(idHTML).style.left = this.posicionCentrada.x + "px";
 	document.getElementById(idHTML).style.top = this.posicionCentrada.y + "px";
 	document.getElementById(idHTML).style.width = this.ancho + "px";
 	document.getElementById(idHTML).style.height = this.alto + "px";
 	document.getElementById(idHTML).style.zIndex = "10"; //ordena en qué posición está cada cosa, con un 10 nos asegurameos que el jugado siempre está en una capa mas alta que las demás (si un juego 2D tiene muchas capas, es indicio de que algo estamos haciendo mal, porque son demasiadas)    
+	document.getElementById(idHTML).style.background = "url('"+ this.rutaHojaSprites +"')";     
+	document.getElementById(idHTML).style.backgroundPosition = "-"+this.origenXSprite + "px -"+ this.origenYSprite + "px";     
+	document.getElementById(idHTML).style.backgroundClip = "border-box";     
+	document.getElementById(idHTML).style.outline = "1px solid transparent";     
+
+
 }
 
 JugadorMapamundi.prototype.comprobarColisiones = function(mapa)

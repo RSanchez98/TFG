@@ -127,14 +127,17 @@ Mapa.prototype.iniciarRejilla = function()
 
 	
 
-	for (c = 0; c < this.rectangulosColisiones.length; c++) 
+	if(debug.debugging)
 	{
-		this.rectangulosColisiones[c].aplicarEstiloTemporal("#ff0000");
-	}
-
-	for(l = 0; l <this.rectangulosLocalizaciones.length; l++)
-	{
-		this.rectangulosLocalizaciones[l].aplicarEstiloTemporal("#00ff00");
+		for (c = 0; c < this.rectangulosColisiones.length; c++) 
+		{
+			this.rectangulosColisiones[c].aplicarEstiloTemporal("#ff0000");
+		}
+	
+		for(l = 0; l <this.rectangulosLocalizaciones.length; l++)
+		{
+			this.rectangulosLocalizaciones[l].aplicarEstiloTemporal("#00ff00");
+		}
 	}
 
 	document.getElementsByTagName("body")[0].style.overflow = "hidden";
@@ -159,13 +162,16 @@ Mapa.prototype.dibujar = function()
 		}
 	}
 
-	for(rc = 0; rc < this.rectangulosColisiones.length; rc++)
+	if(debug.debugging)
 	{
-		this.rectangulosColisiones[rc].mover(this.posicion.x, this.posicion.y);
-	}
-
-	for (rl = 0; rl <this.rectangulosLocalizaciones.length; rl++)
-	{
-		this.rectangulosLocalizaciones[rl].mover(this.posicion.x, this.posicion.y);
+		for(rc = 0; rc < this.rectangulosColisiones.length; rc++)
+		{
+			this.rectangulosColisiones[rc].mover(this.posicion.x, this.posicion.y);
+		}
+	
+		for (rl = 0; rl <this.rectangulosLocalizaciones.length; rl++)
+		{
+			this.rectangulosLocalizaciones[rl].mover(this.posicion.x, this.posicion.y);
+		}
 	}
 }
