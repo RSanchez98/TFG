@@ -3,7 +3,7 @@ function JugadorMapamundi(posicionInicialEnPixeles)
 	this.ancho = 48; //sprites de 16 escalado a 48
 	this.alto = 48;
 
-	this.rutaHojaSprites = "img/personajes48.png";
+	this.rutaHojaSprites = "img/face.png";
 	this.personaje = 5; //elegir personaje
 
 	this.origenXSprite = 0;
