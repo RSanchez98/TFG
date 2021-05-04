@@ -26,11 +26,11 @@
 33,33,28,34,151,118,116,153,125,126,126,126,126,126,144,2,136,74,75,75,
 33,12,13,51,36,78,134,107,142,143,143,143,143,144,2,3,136,91,92,92,
 28,34,37,78,78,78,134,141,117,118,118,116,118,118,152,152,153,36,36,36,
-33,34,78,78,78,78,151,152,153,78,19,19,19,38,6,7,20,36,19,19,
-33,34,78,78,78,78,78,78,78,78,19,139,19,38,23,24,20,36,19,138
+33,34,78,78,78,78,151,152,153,78,19,19,19,38,6,8,20,36,19,19,
+33,34,78,78,78,78,78,78,78,78,19,139,19,38,23,42,20,36,19,138
 </data>
  </layer>
- <objectgroup color="#ff0000" id="2" name="colisiones">
+ <objectgroup color="#ff0000" id="2" name="colisiones" visible="0">
   <object id="1" x="2" y="2" width="954" height="132"/>
   <object id="2" x="2" y="142" width="902" height="44"/>
   <object id="3" x="0" y="190" width="84" height="768"/>
@@ -54,7 +54,7 @@
   <object id="24" x="396" y="242" width="42" height="54"/>
   <object id="25" x="398" y="390" width="54" height="68"/>
  </objectgroup>
- <objectgroup color="#00ff00" id="3" name="localizaciones">
+ <objectgroup color="#00ff00" id="3" name="localizaciones" visible="0">
   <object id="26" name="Ciudad del Árbol Milenario" x="92" y="196" width="152" height="90"/>
   <object id="27" name="La Caseta" x="184" y="632" width="62" height="46"/>
   <object id="28" name="Puesto de vigía" x="488" y="886" width="120" height="64"/>
