@@ -25,10 +25,10 @@ function Mapa(objetoJSON)
 
 	this.iniciarElementosMapa();
 
-	this.limiteMapa = new Rectangulo(this.posicion.x, this.posicion.y, 
-		(this.anchoMedidoEnTiles*this.anchoDeLosTiles), 
-		(this.altoMedidoEnTiles*this.altoDeLosTiles));
-	this.limiteMapa = this.limiteMapa, "colision";//<--
+	this.limiteMapa = new Rectangulo(this.posicion.x,
+		this.posicion.y,
+		this.anchoMedidoEnTiles * this.anchoDeLosTiles,
+		this.altoMedidoEnTiles * this.altoDeLosTiles, "colision");
 }
 
 // Mapa.prototype.iniciarPaletasSprites = function(datosCapas) 
@@ -48,10 +48,10 @@ Mapa.prototype.iniciarCapas = function(datosCapas)
 		{
 			for(c = 0; c < datosCapas[i].objects.length; c++)
 			{
-				this.rectangulosColisiones.push(
-					new Rectangulo(datosCapas[i].objects[c].x , datosCapas[i].objects[c].y, 
-						datosCapas[i].objects[c].width, datosCapas[i].objects[c].height));
-				this.rectangulosLocalizaciones = this.rectangulosLocalizaciones, "colision";//<--
+				this.rectangulosColisiones.push(new Rectangulo(
+					datosCapas[i].objects[c].x, datosCapas[i].objects[c].y,
+					datosCapas[i].objects[c].width, datosCapas[i].objects[c].height, "colision"
+				));
 
 			}
 		}
@@ -67,6 +67,7 @@ Mapa.prototype.iniciarCapas = function(datosCapas)
 
 			console.log("capa de localizaciones");
 		}	
+		break;
 	}
 }
 
