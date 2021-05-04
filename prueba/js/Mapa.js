@@ -60,11 +60,10 @@ Mapa.prototype.iniciarCapas = function(datosCapas)
 					{
 						for(l = 0; l < datosCapas[i].objects.length; l++)
 						{
-							this.rectangulosLocalizaciones.push(new Rectangulo(
-								datosCapas[i].objects[l].x , datosCapas[i].objects[l].y, 
-								datosCapas[i].objects[l].width, datosCapas[i].objects[l].height));
-							this.rectangulosLocalizaciones = this.rectangulosLocalizaciones ,"localizacion"; //<--
-
+							this.rectangulosLocalizaciones.push(new Localizacion(new Rectangulo(
+								datosCapas[i].objects[l].x, datosCapas[i].objects[l].y,
+								datosCapas[i].objects[l].width, datosCapas[i].objects[l].height, "localizacion"
+							), datosCapas[i].objects[l].name));
 						}
 
 						console.log("capa de localizaciones");
@@ -107,7 +106,7 @@ Mapa.prototype.iniciarRejilla = function()
 	var htmlLocalizaciones = "";
 	for (l = 0; l < this.rectangulosLocalizaciones.length; l++)
 	{
-		htmlLocalizaciones += this.rectangulosLocalizaciones[l].html;
+		htmlLocalizaciones += this.rectangulosLocalizaciones[l].rectangulo.html;
 	}
 	document.getElementById("localizaciones").innerHTML = htmlLocalizaciones;
 
@@ -136,7 +135,7 @@ Mapa.prototype.iniciarRejilla = function()
 	
 		for(l = 0; l <this.rectangulosLocalizaciones.length; l++)
 		{
-			this.rectangulosLocalizaciones[l].aplicarEstiloTemporal("#00ff00");
+			this.rectangulosLocalizaciones[l].rectangulo.aplicarEstiloTemporal("#00ff00");
 		}
 	}
 
@@ -171,7 +170,7 @@ Mapa.prototype.dibujar = function()
 	
 		for (rl = 0; rl <this.rectangulosLocalizaciones.length; rl++)
 		{
-			this.rectangulosLocalizaciones[rl].mover(this.posicion.x, this.posicion.y);
+			this.rectangulosLocalizaciones[rl].rectangulo.mover(this.posicion.x, this.posicion.y);
 		}
 	}
 }

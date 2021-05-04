@@ -101,7 +101,7 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":67.3333333333334,
+                 "width":67.3333,
                  "x":254,
                  "y":626
                 }, 
@@ -139,7 +139,7 @@
                  "y":678
                 }, 
                 {
-                 "height":76.6666666666666,
+                 "height":76.6667,
                  "id":13,
                  "name":"",
                  "rotation":0,
@@ -161,7 +161,7 @@
                  "y":822
                 }, 
                 {
-                 "height":99.3333333333334,
+                 "height":99.3333,
                  "id":15,
                  "name":"",
                  "rotation":0,
@@ -169,7 +169,7 @@
                  "visible":true,
                  "width":136,
                  "x":628,
-                 "y":864.666666666667
+                 "y":864.667
                 }, 
                 {
                  "height":136,
@@ -285,7 +285,7 @@
                 {
                  "height":90,
                  "id":26,
-                 "name":"",
+                 "name":"Ciudad del \u00c1rbol Milenario",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -296,7 +296,7 @@
                 {
                  "height":46,
                  "id":27,
-                 "name":"",
+                 "name":"La Caseta",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -307,7 +307,7 @@
                 {
                  "height":64,
                  "id":28,
-                 "name":"",
+                 "name":"Puesto de vig\u00eda",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -318,7 +318,7 @@
                 {
                  "height":86,
                  "id":29,
-                 "name":"",
+                 "name":"Cementerio de las Moscas",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -329,18 +329,18 @@
                 {
                  "height":120,
                  "id":30,
-                 "name":"",
+                 "name":"Atalaya Incipiente",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":71.3333333333334,
-                 "x":880.666666666667,
+                 "width":71.3333,
+                 "x":880.667,
                  "y":534
                 }, 
                 {
                  "height":48,
                  "id":31,
-                 "name":"",
+                 "name":"Caba\u00f1a de las Tresmil Escaleras",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -351,7 +351,7 @@
                 {
                  "height":90,
                  "id":32,
-                 "name":"",
+                 "name":"Pedrusco de la Rascaci\u00f3n",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -362,18 +362,18 @@
                 {
                  "height":70,
                  "id":33,
-                 "name":"",
+                 "name":"Pueblo Vecino-Maldito",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":82,
-                 "x":872.666666666667,
-                 "y":329.333333333333
+                 "x":872.667,
+                 "y":329.333
                 }, 
                 {
                  "height":60,
                  "id":34,
-                 "name":"",
+                 "name":"Cementario Narangil",
                  "rotation":0,
                  "type":"",
                  "visible":true,
