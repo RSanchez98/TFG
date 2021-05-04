@@ -149,30 +149,61 @@ JugadorMapamundi.prototype.mover = function()
 
 JugadorMapamundi.prototype.dirigir = function()
 {
-	if(this.velocidadX < 0) //izquierda
-	{
-		this.origenXSprite = this.ancho * 5;
-	}
-	if(this.velocidadX > 0) //derecha
-	{
-		this.origenXSprite = this.ancho * 4;
-	}
-	if(this.velocidadY < 0) //abajo
+	if(this.velocidadY > 0) //arriba
 	{
 		this.origenXSprite = this.ancho * 3;
 	}
-	if(this.velocidadY > 0) //arriba
+	if(this.velocidadY < 0) //abajo
 	{
-		this.origenXSprite = this.ancho * 2;
+		this.origenXSprite = this.ancho * 6;
 	}
+	if(this.velocidadX < 0) //izquierda
+	{
+		this.origenXSprite = this.ancho * 12;
+	}
+	if(this.velocidadX > 0) //derecha
+	{
+		this.origenXSprite = this.ancho * 9;
+	}
+	
+	
 
-	if(this.velocidadX == 0 && this.velocidadY == 0)
+	if(this.velocidadX == 0 && this.velocidadY == 0) //estatico
 	{
 		this.origenXSprite = 0;
 	}
 
-
 	document.getElementById("jugador").style.backgroundPosition = "-" + this.origenXSprite + "px -" + this.origenYSprite + "px";
+}
+
+JugadorMapamundi.prototype.animar = function()
+{
+	if(this.velocidadX == 0 && this.velocidadY == 0)
+	{
+		this.framesAnimacion = 0;
+		return;
+	}
+
+	this.framesAnimacion++;
+
+	let paso1 = 20;
+	let paso2 = 40;
+	let origenXSpriteTemporal = this.origenXSprite;
+
+	if(this.framesAnimacion > 0 && this.framesAnimacion < paso1)
+	{
+		origenXSpriteTemporal += this.ancho;
+	}
+	if(this.framesAnimacion >= paso1 && this.framesAnimacion < paso2)
+	{
+		origenXSpriteTemporal += this.ancho * 2;
+	}
+	if (this.framesAnimacion == paso2)
+	{
+		this.framesAnimacion = 0;
+	}
+
+	document.getElementById("jugador").style.backgroundPosition = "-" + origenXSpriteTemporal + "px -" + this.origenXSprite + "px";
 }
 
 JugadorMapamundi.prototype.actualizar = function(registroTemporal, mapa) 
@@ -180,4 +211,5 @@ JugadorMapamundi.prototype.actualizar = function(registroTemporal, mapa)
 	this.comprobarColisiones(mapa);
 	this.mover();
 	this.dirigir();
+	this.animar();
 }

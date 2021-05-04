@@ -6,6 +6,7 @@
 		<title>Bowie's Game!</title>
 		<meta name="description" conent="TFG JUEGO WEB PARA IES Romero Vargas">
 		<meta name="author" conent="Rodrigo Sánchez Valle">
+		<link rel ="icon" type="image/png" href="img/face1.png"/>
 	</head>
 	<body>
 		<div id="juego">	
