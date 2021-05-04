@@ -3,7 +3,7 @@ function JugadorMapamundi(posicionInicialEnPixeles)
 	this.ancho = 48; //sprites de 16 escalado a 48
 	this.alto = 48;
 
-	this.rutaHojaSprites = "img/face1.png";
+	this.rutaHojaSprites = "img/allFaces.png";
 	this.personaje = 5; //elegir personaje
 
 	this.origenXSprite = 0;
@@ -36,6 +36,8 @@ function JugadorMapamundi(posicionInicialEnPixeles)
 
 	posicionInicialEnPixeles.x *=-1 
 	posicionInicialEnPixeles.y *=-1
+
+	
 
 	// this.posicionEnMapaEnPixeles = posicionInicialEnPixeles; --> mapa siempre pegado arriba a la izquierda
 	this.posicionEnMapaEnPixeles = new Punto(this.posicionCentrada.x + posicionInicialEnPixeles.x , this.posicionCentrada.y + posicionInicialEnPixeles.y); 
@@ -145,10 +147,37 @@ JugadorMapamundi.prototype.mover = function()
 		this.posicionEnMapaEnPixeles.y += this.velocidadY;
 	}
 
+JugadorMapamundi.prototype.dirigir = function()
+{
+	if(this.velocidadX < 0) //izquierda
+	{
+		this.origenXSprite = this.ancho * 5;
+	}
+	if(this.velocidadX > 0) //derecha
+	{
+		this.origenXSprite = this.ancho * 4;
+	}
+	if(this.velocidadY < 0) //abajo
+	{
+		this.origenXSprite = this.ancho * 3;
+	}
+	if(this.velocidadY > 0) //arriba
+	{
+		this.origenXSprite = this.ancho * 2;
+	}
 
+	if(this.velocidadX == 0 && this.velocidadY == 0)
+	{
+		this.origenXSprite = 0;
+	}
+
+
+	document.getElementById("jugador").style.backgroundPosition = "-" + this.origenXSprite + "px -" + this.origenYSprite + "px";
+}
 
 JugadorMapamundi.prototype.actualizar = function(registroTemporal, mapa) 
 {
 	this.comprobarColisiones(mapa);
 	this.mover();
+	this.dirigir();
 }
