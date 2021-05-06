@@ -10,6 +10,9 @@
 	</head>
 	<body>
 		<div id="juego">	
+			<div id="pantalla-titulo">
+			</div>	
+
 			<div id="mapa">
 			</div>		
 
