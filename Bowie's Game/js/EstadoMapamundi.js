@@ -6,7 +6,7 @@ function EstadoMapamundi(idEstado) {
 	ajax.cargarArchivo("mapas/desierto48.json", function(objetoJSON) {
 		that.mapa = new Mapa(objetoJSON);
 		that.mapaListo = true;
-		that.jugadorMapamundi = new JugadorMapamundi(new Punto(150,300));
+		that.jugadorMapamundi = new JugadorMapamundi(new Punto(500,500));
 		console.log("mapa cargado por AJAX");
 	});
 }
@@ -31,10 +31,6 @@ EstadoMapamundi.prototype.actualizar = function(registroTemporal) {
 			if(!popup.visible) {
 				popup.mostrar(dimensiones.ancho / 2 - 150, dimensiones.alto / 2 - 100,
 				300, nombre);
-			}
-			if(teclado.teclaPulsada(controlesTeclado.entrarLocalizacion))
-			{
-				console.log("ENTRANDO");
 			}
 		}
 

@@ -6,10 +6,8 @@ $fuentesJavascript = array
 (
 	"js/debug.js",
 	"js/dimensiones.js",
-	"js/popup.js",
+	"js/popup",
 	"js/Rectangulo.js",
-	"js/RegistroLocalizacionEntrada.js",
-	"js/registroLocalizaciones.js",
 	"js/Localizacion.js",
 	"js/JugadorMapamundi.js",
 	"js/Sprite.js",

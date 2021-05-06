@@ -4,7 +4,7 @@ function JugadorMapamundi(posicionInicialEnPixeles)
 	this.alto = 48;
 
 	this.rutaHojaSprites = "img/allFaces.png";
-	this.personaje = 5; //elegir personaje
+	// this.personaje = 5; //elegir personaje
 
 	this.origenXSprite = 0;
 	this.origenYSprite = this.alto * this.personaje;
@@ -21,7 +21,7 @@ function JugadorMapamundi(posicionInicialEnPixeles)
 	var centroX = Math.trunc(dimensiones.ancho / 2 - this.ancho / 2); //--> trunca el tamaño de los pixeles apra que no haya 'medios pixeles' porque si no genera una cuadricula blanca para simular esos pixeles
 	var centroY = Math.trunc(dimensiones.alto / 2 - this.alto / 2); //--> trunca el tamaño de los pixeles apra que no haya 'medios pixeles' porque si no genera una cuadricula blanca para simular esos pixeles
 	this.posicionCentrada = new Punto(centroX, centroY); //clase que conteiene una X y una Y, puede colocar algo en una coordenada 2D, y es capaz de compararse con otro punto para ver si están en el mimso punto
-	this.posicionGeneral = new Rectangulo(centroX, centroY, this.ancho, this.alto);
+	this.rectanguloGeneral = new Rectangulo(centroX, centroY, this.ancho, this.alto);
 
 	this.limiteArriba = new Rectangulo(centroX + this.ancho / 3, centroY, this.ancho / 3, 1);
 	this.limiteAbajo = new Rectangulo(centroX + this.ancho / 3, centroY + this.alto - 1, this.ancho / 3, 1);
@@ -37,10 +37,9 @@ function JugadorMapamundi(posicionInicialEnPixeles)
 	posicionInicialEnPixeles.x *=-1 
 	posicionInicialEnPixeles.y *=-1
 
-	
-
 	// this.posicionEnMapaEnPixeles = posicionInicialEnPixeles; --> mapa siempre pegado arriba a la izquierda
-	this.posicionEnMapaEnPixeles = new Punto(this.posicionCentrada.x + posicionInicialEnPixeles.x , this.posicionCentrada.y + posicionInicialEnPixeles.y); 
+	this.posicionEnMapaEnPixeles = new Punto(this.posicionCentrada.x + posicionInicialEnPixeles.x , 
+		this.posicionCentrada.y + posicionInicialEnPixeles.y); 
 
 	this.aplicarEstilos();
 }
@@ -165,7 +164,6 @@ JugadorMapamundi.prototype.dirigir = function()
 	{
 		this.origenXSprite = this.ancho * 9;
 	}
-	
 	
 
 	if(this.velocidadX == 0 && this.velocidadY == 0) //estatico
