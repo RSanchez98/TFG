@@ -1,7 +1,7 @@
 var maquinaEstados = {
 	estadoActual: null,
 	iniciar: function() {
-		maquinaEstados.cambiarEstado(listadoEstados.MAPAMUNDI);
+		maquinaEstados.cambiarEstado(listadoEstados.PANTALLA_TITULO);
 	},
 	cambiarEstado: function(nuevoEstado) {
 		switch(nuevoEstado) {
@@ -14,11 +14,13 @@ var maquinaEstados = {
 				break;
 			case listadoEstados.NIVEL:
 				break;
+			case listadoEstados.PANTALLA_TITULO:
+				maquinaEstados.estadoActual = new EstadoPantallaTitulo();
+				break;
 		}
 	},
 	actualizar: function(registroTemporal) {
 		maquinaEstados.estadoActual.actualizar(registroTemporal);
-		// console.log(teclado.teclas);
 	},
 	dibujar: function() {
 		maquinaEstados.estadoActual.dibujar();
