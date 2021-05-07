@@ -1,4 +1,4 @@
-function Mapa(objetoJSON) 
+function Mapa(objetoJSON) //añadir id estado
 {
 	this.posicion = new Punto(0,0);
 	this.posicionActualizada = new Punto(0,0);
@@ -7,7 +7,7 @@ function Mapa(objetoJSON)
 	let rutaImagenFondo = rutaCompletaImagenFondo.split("/");
 	let nombreImagenFondo = rutaImagenFondo[rutaImagenFondo.length - 1];
 	let nombreMapa = nombreImagenFondo.split(".");
-	this.rutaImagenMapa = "img/" + nombreMapa[0] + ".mapa.png";
+	this.rutaImagenMapa = "img/" + nombreMapa[0] + ".mapa.png"; //adaptar linea
 
 	this.anchoMedidoEnTiles = parseInt(objetoJSON.width);
 	this.altoMedidoEnTiles = parseInt(objetoJSON.height);

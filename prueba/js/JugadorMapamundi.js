@@ -1,4 +1,4 @@
-function JugadorMapamundi(posicionInicialEnPixeles) 
+function JugadorMapamundi(posicionInicialEnPixeles) //añadir id estado
 {
 	this.ancho = 48; //sprites de 16 escalado a 48
 	this.alto = 48;
