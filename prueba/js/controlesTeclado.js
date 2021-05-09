@@ -4,5 +4,6 @@ var controlesTeclado =
     abajo: 's',
     izquierda: 'a',
     derecha: 'd',
-    entrarLocalizacion: 'e'
+    entrarLocalizacion: 'e',
+    saltar: ' '
 };

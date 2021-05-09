@@ -1,5 +1,6 @@
-function Mapa(objetoJSON) //añadir id estado
+function Mapa(objetoJSON, estadoJuego) 
 {
+	this.estadoJuego = estadoJuego;
 	this.posicion = new Punto(0,0);
 	this.posicionActualizada = new Punto(0,0);
 
@@ -7,7 +8,15 @@ function Mapa(objetoJSON) //añadir id estado
 	let rutaImagenFondo = rutaCompletaImagenFondo.split("/");
 	let nombreImagenFondo = rutaImagenFondo[rutaImagenFondo.length - 1];
 	let nombreMapa = nombreImagenFondo.split(".");
-	this.rutaImagenMapa = "img/" + nombreMapa[0] + ".mapa.png"; //adaptar linea
+	if(this.estadoJuego == listadoEstados.MAPAMUNDI)
+	{
+		this.rutaImagenMapa = "img/" + nombreMapa[0] + ".mapa.png";
+	}
+	if(this.estadoJuego == listadoEstados.NIVEL)
+	{
+		this.rutaImagenMapa = "img/" + nombreMapa[0] + ".nivel.png";
+	}
+
 
 	this.anchoMedidoEnTiles = parseInt(objetoJSON.width);
 	this.altoMedidoEnTiles = parseInt(objetoJSON.height);
@@ -16,6 +25,7 @@ function Mapa(objetoJSON) //añadir id estado
 
 	this.rectangulosColisiones = [];
 	this.rectangulosLocalizaciones = [];
+	//rectangulos escaleras
 
 	this.iniciarCapas(objetoJSON.layers);
 
@@ -52,6 +62,7 @@ Mapa.prototype.iniciarCapas = function(datosCapas)
 				), datosCapas[i].objects[l].name));
 			}
 		}	
+		//bloque if capas de escaleras
 	}
 }
 
@@ -75,13 +86,14 @@ Mapa.prototype.iniciarElementosMapa = function()
 	}
 	document.getElementById("colisiones").innerHTML = htmlColisiones;
 
-
 	var htmlLocalizaciones = "";
 	for (l = 0; l < this.rectangulosLocalizaciones.length; l++)
 	{
 		htmlLocalizaciones += this.rectangulosLocalizaciones[l].rectangulo.html;
 	}
 	document.getElementById("localizaciones").innerHTML = htmlLocalizaciones;
+
+	//bloque de escaleras
 
 	if(debug.debugging)
 	{
@@ -94,6 +106,7 @@ Mapa.prototype.iniciarElementosMapa = function()
 		{
 			this.rectangulosLocalizaciones[l].rectangulo.aplicarEstiloTemporal("#00ff00");
 		}
+		//bloque escaleras debugging
 	}
 
 	document.getElementsByTagName("body")[0].style.overflow = "hidden";
@@ -125,5 +138,7 @@ Mapa.prototype.dibujar = function()
 		{
 			this.rectangulosLocalizaciones[rl].rectangulo.mover(this.posicion.x, this.posicion.y);
 		}
+
+		//bloque dibujado escaleras
 	}
 }
