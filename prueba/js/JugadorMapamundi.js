@@ -215,14 +215,18 @@ JugadorMapamundi.prototype.moverEnNivel = function()
 
 JugadorMapamundi.prototype.dirigir = function()
 {
-	if(this.velocidadY > 0) //arriba
+	if(this.estadoJuego == listadoEstados.MAPAMUNDI)
 	{
-		this.origenXSprite = this.ancho * 3;
-	}
+		if(this.velocidadY > 0) //arriba
+		{
+			this.origenXSprite = this.ancho * 3;
+		}
 	if(this.velocidadY < 0) //abajo
-	{
-		this.origenXSprite = this.ancho * 6;
+		{
+			this.origenXSprite = this.ancho * 6;
+		}
 	}
+	
 	if(this.velocidadX > 0) //derecha
 	{
 		this.origenXSprite = this.ancho * 9;
@@ -232,13 +236,6 @@ JugadorMapamundi.prototype.dirigir = function()
 		this.origenXSprite = this.ancho * 12;
 	}
 	
-
-	// if(this.velocidadX == 0 && this.velocidadY == 0) //estatico
-	// {
-	// 	this.origenXSprite = 0;
-	// }
-
-	// document.getElementById("jugador").style.backgroundPosition = "-" + this.origenXSprite + "px -" + this.origenYSprite + "px";
 }
 
 JugadorMapamundi.prototype.animar = function()
@@ -247,6 +244,14 @@ JugadorMapamundi.prototype.animar = function()
 	{
 		this.framesAnimacion = 0;
 		return;
+	}
+
+	if(this.estadoJuego == listadoEstados.NIVEL)
+	{
+		if(this.saltoBloqueado)
+		{
+			return;
+		}
 	}
 
 	this.framesAnimacion++;
