@@ -27,6 +27,11 @@
 
 			<div id="popup">
 			</div>
+
+			<div id="inventario">
+				<div id="cabecera">INVENTARIO</div>
+				<div id="contenido">Contenido</div>
+			</div>
 		</div>
 		<?php
 			include_once 'app/cargadorArchivosJS.inc.php';

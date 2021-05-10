@@ -5,5 +5,6 @@ var controlesTeclado =
     izquierda: 'a',
     derecha: 'd',
     entrarLocalizacion: 'e',
-    saltar: ' '
+    saltar: ' ',
+    inventario: 'i'
 };

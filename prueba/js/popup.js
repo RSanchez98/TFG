@@ -1,7 +1,10 @@
-var popup = {
+var popup = 
+{
     visible: false,
-    mostrar: function(x, y, ancho, texto) {
-        if(popup.visible) {
+    mostrar: function(x, y, ancho, texto) 
+    {
+        if(popup.visible) 
+        {
             return;
         }
 
@@ -21,11 +24,14 @@ var popup = {
         document.getElementById(id).style.border = "3px solid white";
         document.getElementById(id).style.padding = "0.5em";
         document.getElementById(id).style.textAlign = "center";
+        document.getElementById(id).style.fontFamily = "sans-serif, Helvetica";
 
         popup.visible = true;
     },
-    ocultar: function() {
-        if(!popup.visible) {
+    ocultar: function() 
+    {
+        if(!popup.visible) 
+        {
             return;
         }
 

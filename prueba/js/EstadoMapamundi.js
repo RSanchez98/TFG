@@ -53,6 +53,14 @@ EstadoMapamundi.prototype.actualizar = function(registroTemporal)
 		{
 			popup.ocultar();
 		}
+		if(teclado.teclaPulsada(controlesTeclado.inventario) && inventario.visible)
+		{
+			inventario.ocultar(registroTemporal);
+		}
+		if(teclado.teclaPulsada(controlesTeclado.inventario) && !inventario.visible)
+		{
+			inventario.mostrar(100, 100, registroTemporal);
+		}
 	}
 }
 
