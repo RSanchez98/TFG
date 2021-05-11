@@ -32,6 +32,11 @@
 				<div id="cabecera">INVENTARIO</div>
 				<div id="contenido">Contenido</div>
 			</div>
+
+			<div id="inicio-sesion">
+				<div id="cabecera">usuario</div>
+				<div id="contenido">contraseña</div>
+			</div>
 		</div>
 		<?php
 			include_once 'app/cargadorArchivosJS.inc.php';

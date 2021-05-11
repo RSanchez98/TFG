@@ -6,5 +6,6 @@ var controlesTeclado =
     derecha: 'd',
     entrarLocalizacion: 'e',
     saltar: ' ',
-    inventario: 'i'
+    inventario: 'i',
+    inicio_sesion: 'm'
 };

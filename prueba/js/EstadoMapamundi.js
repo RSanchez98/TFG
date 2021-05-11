@@ -61,6 +61,15 @@ EstadoMapamundi.prototype.actualizar = function(registroTemporal)
 		{
 			inventario.mostrar(100, 100, registroTemporal);
 		}
+
+		if(teclado.teclaPulsada(controlesTeclado.inicioSesion) && inicioSesion.visible)
+		{
+			inicioSesion.ocultar(registroTemporal);
+		}
+		if(teclado.teclaPulsada(controlesTeclado.inicioSesion) && !inicioSesion.visible)
+		{
+			inicioSesion.mostrar(100, 100, registroTemporal);
+		}
 	}
 }
 

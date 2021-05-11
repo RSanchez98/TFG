@@ -8,6 +8,7 @@ $fuentesJavascript = array
 	"js/dimensiones.js",
 	"js/EstadoPantallaTitulo.js",
 	"js/inventario.js",
+	"js/inicioSesion.js",
 	"js/popup.js",
 	"js/Rectangulo.js",
 	"js/RegistroLocalizacionEntrada.js",
