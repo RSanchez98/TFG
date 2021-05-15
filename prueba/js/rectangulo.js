@@ -1,25 +1,40 @@
-// x, y --> posicion
-// ancho, alto --> tamaño 
-function Rectangulo(x, y, ancho, alto)
+function Rectangulo(x, y, ancho, alto, tipo) 
 {
-    this.x = x;
-    this.y = y;
-    this.ancho = ancho;
-    this.alto = alto;
-    this.id = x + "r" + y; //EJ--> x = 1,11 y =11,1 | id=1r11, id=11r1
-    this.insertarDOM();
+	this.x = x;
+	this.y = y;
+	this.ancho = ancho;
+	this.alto = alto;
+	this.idHTML = tipo + "x" + x + "y" + y;
+	this.html = '<div id="' + this.idHTML + '"></div>';
 }
 
-Rectangulo.prototype.insertarDOM = function()
+Rectangulo.prototype.cruza = function(rectangulo) 
 {
-    var div = '<div id="' + this.id + '"></div>'; //ejemplo --> <div id="r0102"></div>
-	var html = document.getElementById("juego").innerHTML; //obtine el contenido que haya dentro del div id=juego y lo vuelca en la variable html
-	var color = '#' + Math.floor(Math.random() * 16777215).toString(16); //para obtener un numero en hexadecimal que siempre esté en el rango de los colores de CSS
-	document.getElementById("juego").innerHTML = html + div;
-	document.getElementById(this.id).style.position = "absolute";
-	document.getElementById(this.id).style.left = this.x + "px";
-	document.getElementById(this.id).style.top = this.y + "px";
-	document.getElementById(this.id).style.width = this.ancho + "px";
-	document.getElementById(this.id).style.height = this.alto + "px";
-	document.getElementById(this.id).style.backgroundColor = color;
+	return (this.x < rectangulo.x + rectangulo.ancho &&
+		this.x + this.ancho > rectangulo.x &&
+		this.y < rectangulo.y + rectangulo.alto &&
+		this.alto + this.y > rectangulo.y) ? true : false;
+}
+
+Rectangulo.prototype.aplicarEstiloTemporal = function(colorHexadecimal) 
+{
+	if (!document.getElementById(this.idHTML)) 
+	{
+		throw("El ID " + this.idHTML + " no existe en la hoja");
+	}
+	
+	//var color = "#ff0000";
+	document.getElementById(this.idHTML).style.backgroundColor = colorHexadecimal;
+
+	document.getElementById(this.idHTML).style.position = "absolute";
+	document.getElementById(this.idHTML).style.left = this.x + "px";
+	document.getElementById(this.idHTML).style.top = this.y + "px";
+	document.getElementById(this.idHTML).style.width = this.ancho + "px";
+	document.getElementById(this.idHTML).style.height = this.alto + "px";
+	document.getElementById(this.idHTML).style.zIndex = "5";
+}
+
+Rectangulo.prototype.mover = function(x, y) 
+{
+	document.getElementById(this.idHTML).style.transform = 'translate3d(' + x + 'px,' + y + 'px, 0)';
 }

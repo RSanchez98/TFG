@@ -1,0 +1,11 @@
+{
+    "villa": {
+        "mapa": "niveles/villa48.json",
+        "imagen": "villa48.nivel.png"
+    },
+    "pueblo":
+    {
+        "mapa": "niveles/mapa1.json",
+        "imagen": "mapa1.nivel.png"
+    }
+}

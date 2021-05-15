@@ -1,16 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Juego web</title>
-    <meta name="description" content="Esto es un juego web para mi Trabajo de Fin de Grado">
-    <meta name="author" content="Rodrigo Sánchez Valle">
-</head>
-<body>
-    <div id="juego">
-    </div>
-    <?php
-        include_once 'app/cargadorArchivosJS.inc.php';
-    ?>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<title>Bowie's Game!</title>
+		<meta name="description" conent="TFG JUEGO WEB PARA IES Romero Vargas">
+		<meta name="author" conent="Rodrigo Sánchez Valle">
+		<link rel ="icon" type="image/png" href="img/faces/base1.png"/>
+	</head>
+	<body>
+		<div id="juego">	
+			<div id="pantalla-titulo">
+			</div>	
+
+			<div id="mapa">
+			</div>		
+
+			<div id="jugador">
+			</div>
+
+			<div id="colisiones">
+			</div>
+
+			<div id="localizaciones">
+			</div>
+
+			<div id="popup">
+			</div>
+
+			<div id="inventario">
+				<div id="cabecera">INVENTARIO</div>
+				<div id="contenido">Contenido</div>
+			</div>
+
+			<div id="inicio-sesion">
+				<div id="cabecera">usuario</div>
+				<div id="contenido">contraseña</div>
+			</div>
+		</div>
+		<?php
+			include_once 'app/cargadorArchivosJS.inc.php';
+		?>
+	</body>
 </html>
