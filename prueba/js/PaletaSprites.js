@@ -1,4 +1,5 @@
-function PaletaSprites(datosSprites) {
+function PaletaSprites(datosSprites) 
+{
 	this.rutaImagen = datosSprites.image;
 
 	this.anchoImagen = parseInt(datosSprites.imagewidth);
@@ -15,14 +16,16 @@ function PaletaSprites(datosSprites) {
 
 	this.sprites = [];
 
-	for (s = 0; s < this.totalSprites; s++) {
+	for (s = 0; s < this.totalSprites; s++) 
+	{
 		var idActualSobreZero = this.primerSpriteSobreUno - 1 + s;
 		this.sprites.push(new Sprite(this.rutaImagen, idActualSobreZero,
 			this.obtenerPosicionDesdeIdSprite(idActualSobreZero)));
 	}
 }
 
-PaletaSprites.prototype.obtenerPosicionDesdeIdSprite = function(idSpriteSobreZero) {
+PaletaSprites.prototype.obtenerPosicionDesdeIdSprite = function(idSpriteSobreZero) 
+{
 	var y = Math.floor(idSpriteSobreZero / this.anchoImagenMedidoEnSprites);
 	var x = idSpriteSobreZero % this.anchoImagenMedidoEnSprites;
 

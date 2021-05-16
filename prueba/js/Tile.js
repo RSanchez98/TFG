@@ -9,7 +9,8 @@ function Tile(xEnTiles, yEnTiles, z, ancho, alto, sprite)
 
 Tile.prototype.aplicarEstilos = function() 
 {
-	if (!document.getElementById(this.idHTML)) {
+	if (!document.getElementById(this.idHTML)) 
+	{
 		throw("El ID " + this.idHTML + " no existe en la hoja");
 	}
 
