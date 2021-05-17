@@ -9,6 +9,7 @@
 		<link rel ="icon" type="image/png" href="img/faces/base1.png"/>
 	</head>
 	<body>
+	
 		<div id="juego">	
 			<div id="pantalla-titulo">
 			</div>	
@@ -33,13 +34,42 @@
 				<div id="contenido">Contenido</div>
 			</div>
 
-			<div id="inicio-sesion">
-				<div id="cabecera">usuario</div>
-				<div id="contenido">contraseña</div>
+			<div id ="inicioSesion">
+				<form action ="#">
+					<label for = "usuario" style = "color: white;"> Usuario: </label>
+					<input type="text" id="usuario" name="usuario"><br>
+
+					<label for = "contraseña" style = "color: white;"> Contraseña: </label>
+					<input type="text" id="contraseña" name="contraseña"><br>
+					
+					<input onclick="Grabar()" type="submit" value="Submit">
+				</form>
 			</div>
+			
+
 		</div>
 		<?php
 			include_once 'app/cargadorArchivosJS.inc.php';
 		?>
+		<script>
+			function Grabar()
+			{
+				var usuario = document.getElementById("usuario").innerHTML;
+				var contraseña = document.getElementById("contraseña").innerHTML;
+
+				var xhr = XMLHttpRequest();
+				xhr.onredystatechange = function()
+				{
+					if(xhr.readyState == 4 && xhr.status == 200)
+					{
+
+					}
+				}
+
+				xhr.open("POST", "servidor/graba.php", true);
+
+				xhr.send();
+			}
+		</script>
 	</body>
 </html>
