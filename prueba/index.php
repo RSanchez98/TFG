@@ -8,6 +8,11 @@
 		<meta name="author" conent="Rodrigo Sánchez Valle">
 		<link rel ="icon" type="image/png" href="img/faces/base1.png"/>
 	</head>
+	<!-- <div>
+		<input type="text" id = "usuario"> <br>
+		<input type="text" id = "contraseña"><br>
+		<input type="submit" onclick="Grabar()" id="parrafo" value="Submit" style="color: white;">Guardar</input>
+	</div> -->
 	<body>
 	
 		<div id="juego">	
@@ -62,14 +67,18 @@
 				{
 					if(xhr.readyState == 4 && xhr.status == 200)
 					{
-
+						if(xhr.responseText == 'N')
+						{
+							alert('Error en la grabacion');
+						}
 					}
 				}
 
 				xhr.open("POST", "servidor/graba.php", true);
-
-				xhr.send();
+				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
+				xhr.send('usuario=${usuario}&contraseña=${contraseña}');
 			}
 		</script>
 	</body>
+	
 </html>
