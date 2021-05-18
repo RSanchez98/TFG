@@ -2,7 +2,9 @@ function EstadoMapamundi(idEstado, rutaMapaJSON, xInicial, yInicial) {
 	var that = this;
 	this.mapaListo = false;
 	this.mapa = null;
+	this.nivel = null;
 	this.jugadorMapamundi = null;
+	this.jugadorNivel = null;
 	ajax.cargarArchivo(rutaMapaJSON, function(objetoJSON) {
 		that.mapa = new Mapa(objetoJSON, idEstado);
 		that.mapaListo = true;
@@ -21,26 +23,30 @@ EstadoMapamundi.prototype.actualizar = function(registroTemporal) {
 
 	let localizacionAtravesada = false;
 	
-	for(var i = 0; i < this.mapa.rectangulosLocalizaciones.length; i++) {
+	for(var i = 0; i < this.mapa.rectangulosLocalizaciones.length; i++) 
+	{
 		let rActual = this.mapa.rectangulosLocalizaciones[i].rectangulo;
 		let nombre = this.mapa.rectangulosLocalizaciones[i].nombre;
 		let rTemporal = new Rectangulo(rActual.x + this.mapa.posicion.x,
 		rActual.y + this.mapa.posicion.y, rActual.ancho, rActual.alto);
 		let objetoEntradaLocalizacion = null;
-		if(rTemporal.cruza(this.jugadorMapamundi.rectanguloGeneral)) {
+		if(rTemporal.cruza(this.jugadorMapamundi.rectanguloGeneral)) 
+		{
 			localizacionAtravesada = true;
 			objetoEntradaLocalizacion = registroLocalizaciones.obtenerLocalizacion(nombre);
 			if(!popup.visible) {
 				popup.mostrar(dimensiones.ancho / 2 - 150, dimensiones.alto / 2 - 100,
 				300, nombre);
 			}
-			if(teclado.teclaPulsada(controlesTeclado.entrarLocalizacion)) {
+			if(teclado.teclaPulsada(controlesTeclado.entrarLocalizacion)) 
+			{
 				maquinaEstados.cambiarEstado(listadoEstados.NIVEL, objetoEntradaLocalizacion);
 				console.log(objetoEntradaLocalizacion);
 			}
 		}
 
-		if(!localizacionAtravesada && popup.visible) {
+		if(!localizacionAtravesada && popup.visible) 
+		{
 			popup.ocultar();
 		}
 	}
