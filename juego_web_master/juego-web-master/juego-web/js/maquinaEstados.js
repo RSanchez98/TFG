@@ -1,10 +1,14 @@
-var maquinaEstados = {
+var maquinaEstados = 
+{
 	estadoActual: null,
-	iniciar: function() {
+	iniciar: function() 
+	{
 		maquinaEstados.cambiarEstado(listadoEstados.PANTALLA_TITULO);
 	},
-	cambiarEstado: function(nuevoEstado, objetoEntradaLocalizacion) {
-		switch(nuevoEstado) {
+	cambiarEstado: function(nuevoEstado, objetoEntradaLocalizacion) 
+	{
+		switch(nuevoEstado) 
+		{
 			case listadoEstados.CARGANDO:
 				break;
 			case listadoEstados.MENU_INICIAL:
@@ -15,7 +19,6 @@ var maquinaEstados = {
 			case listadoEstados.NIVEL:
 				maquinaEstados.estadoActual = new EstadoMapamundi(listadoEstados.NIVEL, objetoEntradaLocalizacion.rutaMapa,
 					objetoEntradaLocalizacion.coordenadaXInicial, objetoEntradaLocalizacion.coordenadaYInicial);
-				//reproducir audio del nivel
 				break;
 			case listadoEstados.PANTALLA_TITULO:
 				console.log("iniciando pantalla");
@@ -23,10 +26,12 @@ var maquinaEstados = {
 				break;
 		}
 	},
-	actualizar: function(registroTemporal) {
+	actualizar: function(registroTemporal) 
+	{
 		maquinaEstados.estadoActual.actualizar(registroTemporal);
 	},
-	dibujar: function() {
+	dibujar: function() 
+	{
 		maquinaEstados.estadoActual.dibujar();
 	}
 }
