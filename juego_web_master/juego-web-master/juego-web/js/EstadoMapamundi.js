@@ -1,11 +1,13 @@
-function EstadoMapamundi(idEstado, rutaMapaJSON, xInicial, yInicial) {
+function EstadoMapamundi(idEstado, rutaMapaJSON, xInicial, yInicial) 
+{
 	var that = this;
 	this.mapaListo = false;
 	this.mapa = null;
 	this.nivel = null;
 	this.jugadorMapamundi = null;
 	this.jugadorNivel = null;
-	ajax.cargarArchivo(rutaMapaJSON, function(objetoJSON) {
+	ajax.cargarArchivo(rutaMapaJSON, function(objetoJSON) 
+	{
 		that.mapa = new Mapa(objetoJSON, idEstado);
 		that.mapaListo = true;
 		that.jugadorMapamundi = new JugadorMapamundi(new Punto(xInicial, yInicial), idEstado);
@@ -13,8 +15,10 @@ function EstadoMapamundi(idEstado, rutaMapaJSON, xInicial, yInicial) {
 	});
 }
 
-EstadoMapamundi.prototype.actualizar = function(registroTemporal) {
-	if (!this.mapaListo || this.mapa == null || this.jugadorMapamundi == null) {
+EstadoMapamundi.prototype.actualizar = function(registroTemporal) 
+{
+	if (!this.mapaListo || this.mapa == null || this.jugadorMapamundi == null) 
+	{
 		return;
 	}
 	
@@ -52,8 +56,10 @@ EstadoMapamundi.prototype.actualizar = function(registroTemporal) {
 	}
 }
 
-EstadoMapamundi.prototype.dibujar = function() {
-	if (!this.mapaListo) {
+EstadoMapamundi.prototype.dibujar = function() 
+{
+	if (!this.mapaListo) 
+	{
 		return;
 	}
 	this.mapa.dibujar();

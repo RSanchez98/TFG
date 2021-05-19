@@ -1,4 +1,5 @@
-function Mapa(objetoJSON, estadoJuego) { //añadir id estado
+function Mapa(objetoJSON, estadoJuego) 
+{ 
 	this.estadoJuego = estadoJuego;
 	this.posicion = new Punto(0,0);
 	this.posicionActualizada = new Punto(0,0);
@@ -8,10 +9,12 @@ function Mapa(objetoJSON, estadoJuego) { //añadir id estado
 	let nombreImagenFondo = rutaImagenFondo[rutaImagenFondo.length - 1];
 	let nombreMapa = nombreImagenFondo.split(".");
 
-	if (this.estadoJuego == listadoEstados.MAPAMUNDI) {
+	if (this.estadoJuego == listadoEstados.MAPAMUNDI) 
+	{
 		this.rutaImagenMapa = "img/" + nombreMapa[0] + ".mapa.png";
 	}
-	if (this.estadoJuego == listadoEstados.NIVEL) {
+	if (this.estadoJuego == listadoEstados.NIVEL) 
+	{
 		this.rutaImagenMapa = "img/" + nombreMapa[0] + ".nivel.png";
 	}
 
@@ -34,26 +37,31 @@ function Mapa(objetoJSON, estadoJuego) { //añadir id estado
 		this.altoMedidoEnTiles * this.altoDeLosTiles, "colision");
 }
 
-Mapa.prototype.iniciarCapas = function(datosCapas) {
-	for (i = 0; i < datosCapas.length; i++) {
-		if (datosCapas[i].name == "colisiones") {
+Mapa.prototype.iniciarCapas = function(datosCapas) 
+{
+	for (i = 0; i < datosCapas.length; i++) 
+	{
+		if (datosCapas[i].name == "colisiones") 
+		{
 			console.log("capa colisiones");
-			for (c = 0; c < datosCapas[i].objects.length; c++) {
+			for (c = 0; c < datosCapas[i].objects.length; c++) 
+			{
 				this.rectangulosColisiones.push(new Rectangulo(
 					datosCapas[i].objects[c].x, datosCapas[i].objects[c].y,
 					datosCapas[i].objects[c].width, datosCapas[i].objects[c].height, "colision"
 				));
 			}
 		}
-		if (datosCapas[i].name == "localizaciones") {
-			for (l = 0; l < datosCapas[i].objects.length; l++) {
+		if (datosCapas[i].name == "localizaciones") 
+		{
+			for (l = 0; l < datosCapas[i].objects.length; l++) 
+			{
 				this.rectangulosLocalizaciones.push(new Localizacion(new Rectangulo(
 					datosCapas[i].objects[l].x, datosCapas[i].objects[l].y,
 					datosCapas[i].objects[l].width, datosCapas[i].objects[l].height, "localizacion"
 				), datosCapas[i].objects[l].name));
 			}
 		}
-		//bloque if capas de escaleras
 	}
 }
 
