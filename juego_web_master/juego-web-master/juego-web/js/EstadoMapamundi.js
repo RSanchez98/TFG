@@ -10,7 +10,8 @@ function EstadoMapamundi(idEstado, rutaMapaJSON, xInicial, yInicial)
 	{
 		that.mapa = new Mapa(objetoJSON, idEstado);
 		that.mapaListo = true;
-		that.jugadorMapamundi = new JugadorMapamundi(new Punto(xInicial, yInicial), idEstado);
+		that.jugadorMapamundi = new JugadorMapamundi
+			(new Punto(xInicial, yInicial), idEstado);
 		console.log("mapa cargado por AJAX");
 	});
 }
