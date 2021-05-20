@@ -1,4 +1,5 @@
-var controlesTeclado = {
+var controlesTeclado = 
+{
 	arriba: 'w',
 	abajo: 's',
 	izquierda: 'a',
