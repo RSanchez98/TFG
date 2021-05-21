@@ -30,8 +30,10 @@ function JugadorMapamundi(posicionInicialEnPixeles, estadoJuego) {
 	this.framesAnimacion = 0;
 
 	//eliminar decimales y centrar al jugador
-	var centroX = Math.trunc(dimensiones.ancho / 2 - this.ancho / 2);
-	var centroY = Math.trunc(dimensiones.alto / 2 - this.alto / 2);
+	var centroX = Math.trunc
+		(dimensiones.ancho / 2 - this.ancho / 2);
+	var centroY = Math.trunc
+		(dimensiones.alto / 2 - this.alto / 2);
 	this.posicionCentrada = new Punto(centroX, centroY);
 	this.rectanguloGeneral = new Rectangulo(centroX, centroY, this.ancho, this.alto);
 
@@ -51,7 +53,6 @@ function JugadorMapamundi(posicionInicialEnPixeles, estadoJuego) {
 
 	this.posicionEnMapaEnPixeles = new Punto(this.posicionCentrada.x + posicionInicialEnPixeles.x,
 		this.posicionCentrada.y + posicionInicialEnPixeles.y);
-
 	this.aplicarEstilos();
 }
 
