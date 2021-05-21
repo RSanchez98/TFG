@@ -108,7 +108,8 @@ Mapa.prototype.iniciarElementosMapa = function() {
 	document.getElementsByTagName("body")[0].style.backgroundColor = "black";
 }
 
-Mapa.prototype.actualizar = function(registroTemporal, posicionJugadorEnPixeles) {
+Mapa.prototype.actualizar = function(registroTemporal, posicionJugadorEnPixeles) 
+{
 	this.posicion.x = posicionJugadorEnPixeles.x;
 	this.posicion.y = posicionJugadorEnPixeles.y;
 
@@ -126,8 +127,6 @@ Mapa.prototype.dibujar = function() {
 		
 		for (rl = 0; rl < this.rectangulosLocalizaciones.length; rl++) {
 			this.rectangulosLocalizaciones[rl].rectangulo.mover(this.posicion.x, this.posicion.y);
-		}
-
-		//bloque dibujado escaleras
+		} 
 	}
-}
+} 

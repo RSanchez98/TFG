@@ -55,9 +55,9 @@ function JugadorMapamundi(posicionInicialEnPixeles, estadoJuego) {
 	this.aplicarEstilos();
 }
 
-JugadorMapamundi.prototype.aplicarEstilos = function() {
+JugadorMapamundi.prototype.aplicarEstilos = function() 
+{
 	var idHTML = "jugador";
-	//document.getElementById(idHTML).style.backgroundColor = "white";
 	document.getElementById(idHTML).style.position = "absolute";
 	document.getElementById(idHTML).style.left = this.posicionCentrada.x + "px";
 	document.getElementById(idHTML).style.top = this.posicionCentrada.y + "px";

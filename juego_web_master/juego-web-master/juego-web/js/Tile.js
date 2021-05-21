@@ -27,6 +27,7 @@ Tile.prototype.aplicarEstilos = function() {
 	document.getElementById(this.idHTML).style.outline = "1px solid transparent";
 }
 
-Tile.prototype.mover = function(x, y) {
+Tile.prototype.mover = function(x, y) 
+{
 	document.getElementById(this.idHTML).style.transform = 'translate3d(' + x + 'px,' + y + 'px, 0)';
 }
