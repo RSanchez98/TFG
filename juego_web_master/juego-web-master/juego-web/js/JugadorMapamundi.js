@@ -12,7 +12,7 @@ function JugadorMapamundi(posicionInicialEnPixeles, estadoJuego) {
 
 	this.velocidadMovimiento = 3;
 
-	this.velocidadX = 0;
+	this.velocidadX = 0; 
 	this.velocidadY = 0;
 
 	this.subiendo = false;
@@ -77,16 +77,20 @@ JugadorMapamundi.prototype.comprobarColisiones = function(mapa) {
 	this.colisionIzquierda = false;
 	this.colisionDerecha = false;
 	
-	if (!this.limiteArriba.cruza(mapa.limiteMapa)) {
+	if (!this.limiteArriba.cruza(mapa.limiteMapa)) 
+	{
 		this.colisionArriba = true;
 	}
-	if (!this.limiteAbajo.cruza(mapa.limiteMapa)) {
+	if (!this.limiteAbajo.cruza(mapa.limiteMapa)) 
+	{
 		this.colisionAbajo = true;
 	}
-	if (!this.limiteIzquierda.cruza(mapa.limiteMapa)) {
+	if (!this.limiteIzquierda.cruza(mapa.limiteMapa)) 
+	{
 		this.colisionIzquierda = true;
 	}
-	if (!this.limiteDerecha.cruza(mapa.limiteMapa)) {
+	if (!this.limiteDerecha.cruza(mapa.limiteMapa)) 
+	{
 		this.colisionDerecha = true;
 	}
 	

@@ -6,7 +6,6 @@ function JugadorMapamundi(posicionInicialEnPixeles, estadoJuego)
 	this.alto = 48;
 
 	this.rutaHojaSprites = "img/allFaces.png";
-	// this.personaje = 5; //elegir personaje
 
 	this.origenXSprite = 0;
 	this.origenYSprite = this.alto * this.personaje;
@@ -15,6 +14,9 @@ function JugadorMapamundi(posicionInicialEnPixeles, estadoJuego)
 
 	this.velocidadX = 0;
 	this.velocidadY = 0;
+
+	this.enMovimiento = false;
+	this.framesAnimacion = 0;
 
 	this.subiendo = false;
 	this.saltoBloqueado = false;
@@ -28,10 +30,8 @@ function JugadorMapamundi(posicionInicialEnPixeles, estadoJuego)
 	//modo escalera
 	
 
-	this.enMovimiento = false;
-	this.framesAnimacion = 0;
-
 	
+
 	var centroX = Math.trunc(dimensiones.ancho / 2 - this.ancho / 2); //--> trunca el tamaño de los pixeles apra que no haya 'medios pixeles' porque si no genera una cuadricula blanca para simular esos pixeles
 	var centroY = Math.trunc(dimensiones.alto / 2 - this.alto / 2); //--> trunca el tamaño de los pixeles apra que no haya 'medios pixeles' porque si no genera una cuadricula blanca para simular esos pixeles
 	this.posicionCentrada = new Punto(centroX, centroY); //clase que conteiene una X y una Y, puede colocar algo en una coordenada 2D, y es capaz de compararse con otro punto para ver si están en el mimso punto
@@ -71,9 +71,7 @@ JugadorMapamundi.prototype.aplicarEstilos = function()
 	document.getElementById(idHTML).style.background = "url('"+ this.rutaHojaSprites +"')";     
 	document.getElementById(idHTML).style.backgroundPosition = "-"+this.origenXSprite + "px -"+ this.origenYSprite + "px";     
 	document.getElementById(idHTML).style.backgroundClip = "border-box";     
-	document.getElementById(idHTML).style.outline = "1px solid transparent";     
-
-
+	document.getElementById(idHTML).style.outline = "1px solid transparent";
 }
 
 JugadorMapamundi.prototype.comprobarColisiones = function(mapa)
