@@ -241,7 +241,7 @@ JugadorMapamundi.prototype.dirigir = function()
 JugadorMapamundi.prototype.animar = function()
 {
 	if(this.velocidadX == 0 && this.velocidadY == 0)
-	{z
+	{
 		this.framesAnimacion = 0;
 		return;
 	}
