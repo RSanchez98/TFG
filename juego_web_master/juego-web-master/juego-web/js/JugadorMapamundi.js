@@ -204,7 +204,8 @@ JugadorMapamundi.prototype.dirigir = function() {
 		document.getElementById("jugador").style.transform = "scaleX(1)";
 	}
 
-	document.getElementById("jugador").style.backgroundPosition = "-" + this.origenXSprite + "px -" + this.origenYSprite + "px";
+	document.getElementById("jugador").style.backgroundPosition = 
+	"-" + this.origenXSprite + "px -" + this.origenYSprite + "px";
 }
 
 JugadorMapamundi.prototype.animar = function() {
