@@ -233,7 +233,6 @@ JugadorMapamundi.prototype.dirigir = function()
 	{
 		this.origenXSprite = this.ancho * 12;
 	}
-	
 }
 
 JugadorMapamundi.prototype.animar = function()
