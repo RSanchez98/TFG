@@ -15,7 +15,7 @@ function Mapa(objetoJSON, estadoJuego)
 	}
 	if (this.estadoJuego == listadoEstados.NIVEL) 
 	{
-		this.rutaImagenMapa = "img/" + nombreMapa[0] + ".nivel.png";
+		this.rutaImagenMapa = "img/" + nombreMapa[0] + ".nivel.png"; 
 	}
 
 	this.anchoMedidoEnTiles = parseInt(objetoJSON.width);

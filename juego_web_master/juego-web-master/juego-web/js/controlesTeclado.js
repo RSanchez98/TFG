@@ -5,5 +5,6 @@ var controlesTeclado =
 	izquierda: 'a',
 	derecha: 'd',
 	entrarLocalizacion: 'r',
+	salirLocalizacion: 'x',
 	saltar: ' '
 };

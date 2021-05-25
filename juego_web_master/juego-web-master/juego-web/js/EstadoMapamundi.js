@@ -47,6 +47,11 @@ EstadoMapamundi.prototype.actualizar = function(registroTemporal)
 				maquinaEstados.cambiarEstado(listadoEstados.NIVEL, objetoEntradaLocalizacion);
 				console.log(objetoEntradaLocalizacion);
 			}
+			if(teclado.teclaPulsada(controlesTeclado.salirLocalizacion)) 
+			{
+				maquinaEstados.cambiarEstado(listadoEstados.MAPAMUNDI, objetoEntradaLocalizacion);
+				console.log(objetoEntradaLocalizacion);
+			}
 		}
 
 		if(!localizacionAtravesada && popup.visible) 
