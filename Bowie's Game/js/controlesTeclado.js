@@ -1,6 +1,10 @@
-var controlesTeclado = {
+var controlesTeclado = 
+{
 	arriba: 'w',
 	abajo: 's',
 	izquierda: 'a',
-	derecha: 'd'
+	derecha: 'd',
+	entrarLocalizacion: 'r',
+	salirLocalizacion: 'x',
+	saltar: ' '
 };

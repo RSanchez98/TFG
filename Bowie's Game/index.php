@@ -3,15 +3,17 @@
 <html lang="es">
 	<head>
 		<meta charset="utf-8">
-		<title>Bowie's Game!</title>
-		<meta name="description" conent="TFG JUEGO WEB PARA IES Romero Vargas">
-		<meta name="author" conent="Rodrigo Sánchez Valle">
-		<link rel ="icon" type="image/png" href="img/faces/base1.png"/>
+		<title>Juego web</title>
+		<meta name="description" conent="Esto es un juego web">
+		<meta name="author" conent="JavaDevOne">
 	</head>
 	<body>
-		<div id="juego">	
+		<div id="juego">
+			<div id="pantalla-titulo">
+			</div>
+
 			<div id="mapa">
-			</div>		
+			</div>
 
 			<div id="jugador">
 			</div>
@@ -21,7 +23,7 @@
 
 			<div id="localizaciones">
 			</div>
-
+			
 			<div id="popup">
 			</div>
 		</div>

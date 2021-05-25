@@ -1,4 +1,6 @@
-function Mapa(objetoJSON) {
+function Mapa(objetoJSON, estadoJuego) 
+{ 
+	this.estadoJuego = estadoJuego;
 	this.posicion = new Punto(0,0);
 	this.posicionActualizada = new Punto(0,0);
 
@@ -6,20 +8,25 @@ function Mapa(objetoJSON) {
 	let rutaImagenFondo = rutaCompletaImagenFondo.split("/");
 	let nombreImagenFondo = rutaImagenFondo[rutaImagenFondo.length - 1];
 	let nombreMapa = nombreImagenFondo.split(".");
-	this.rutaImagenMapa = "img/" + nombreMapa[0] + ".mapa.png";
+
+	if (this.estadoJuego == listadoEstados.MAPAMUNDI) 
+	{
+		this.rutaImagenMapa = "img/" + nombreMapa[0] + ".mapa.png";
+	}
+	if (this.estadoJuego == listadoEstados.NIVEL) 
+	{
+		this.rutaImagenMapa = "img/" + nombreMapa[0] + ".nivel.png"; 
+	}
 
 	this.anchoMedidoEnTiles = parseInt(objetoJSON.width);
 	this.altoMedidoEnTiles = parseInt(objetoJSON.height);
 	this.anchoDeLosTiles = parseInt(objetoJSON.tilewidth);
 	this.altoDeLosTiles = parseInt(objetoJSON.tileheight);
 
-	//this.paletasSprites = [];
-	//this.iniciarPaletasSprites(objetoJSON.tilesets);
-
 	this.rectangulosColisiones = [];
 	this.rectangulosLocalizaciones = [];
+	//rectangulos escaleras
 
-	//this.capasTiles = [];
 	this.iniciarCapas(objetoJSON.layers);
 
 	this.iniciarElementosMapa();
@@ -30,19 +37,13 @@ function Mapa(objetoJSON) {
 		this.altoMedidoEnTiles * this.altoDeLosTiles, "colision");
 }
 
-/*
-Mapa.prototype.iniciarPaletasSprites = function(datosCapas) {
-	for (i = 0; i < datosCapas.length; i++) {
-		this.paletasSprites.push(new PaletaSprites(datosCapas[i]));
-	}
-}
-*/
-
 Mapa.prototype.iniciarCapas = function(datosCapas) 
 {
-	for (i = 0; i < datosCapas.length; i++) {
+	for (i = 0; i < datosCapas.length; i++) 
+	{
 		if (datosCapas[i].name == "colisiones") 
 		{
+			console.log("capa colisiones");
 			for (c = 0; c < datosCapas[i].objects.length; c++) 
 			{
 				this.rectangulosColisiones.push(new Rectangulo(
@@ -60,8 +61,7 @@ Mapa.prototype.iniciarCapas = function(datosCapas)
 					datosCapas[i].objects[l].width, datosCapas[i].objects[l].height, "localizacion"
 				), datosCapas[i].objects[l].name));
 			}
-			console.log("Capa de localizaciones");
-		}	
+		}
 	}
 }
 
@@ -77,45 +77,20 @@ Mapa.prototype.iniciarElementosMapa = function() {
 	document.getElementById(idHTML).style.backgroundClip = "border-box";
 	document.getElementById(idHTML).style.outline = "1px solid transparent";
 
-	/*
-	for (ct = 0; ct < this.capasTiles.length; ct++) {
-		for (t = 0; t < this.capasTiles[ct].tiles.length; t++) {
-			if (this.capasTiles[ct].tiles[t] == null) {
-				continue;
-			}
-			var tileActual = this.capasTiles[ct].tiles[t];
-			html += tileActual.html;
-		}
-	}
-
-	document.getElementById("mapa").innerHTML = html;
-	*/
 	var htmlColisiones = "";
 	for(c = 0; c < this.rectangulosColisiones.length; c++) {
 		htmlColisiones += this.rectangulosColisiones[c].html;
 	}
-	
 	document.getElementById("colisiones").innerHTML = htmlColisiones;
 	
 	var htmlLocalizaciones = "";
 	for(l = 0; l < this.rectangulosLocalizaciones.length; l++) {
 		htmlLocalizaciones += this.rectangulosLocalizaciones[l].rectangulo.html;
 	}
-	
 	document.getElementById("localizaciones").innerHTML = htmlLocalizaciones;
-
-	/*
-	for (ct = 0; ct < this.capasTiles.length; ct++) {
-		for (t = 0; t < this.capasTiles[ct].tiles.length; t++) {
-			if (this.capasTiles[ct].tiles[t] == null) {
-				continue;
-			}
-			var tileActual = this.capasTiles[ct].tiles[t];
-			tileActual.aplicarEstilos();
-		}
-	}
-	*/
 	
+	//bloque de escaleras
+
 	if(debug.debugging) {
 		for (c = 0; c < this.rectangulosColisiones.length; c++) {
 			this.rectangulosColisiones[c].aplicarEstiloTemporal("#ff0000");
@@ -124,6 +99,8 @@ Mapa.prototype.iniciarElementosMapa = function() {
 		for (l = 0; l < this.rectangulosLocalizaciones.length; l++) {
 			this.rectangulosLocalizaciones[l].rectangulo.aplicarEstiloTemporal("#00ff00");
 		}
+
+		//bloque escaleras debugging
 	}
 	
 	
@@ -131,7 +108,8 @@ Mapa.prototype.iniciarElementosMapa = function() {
 	document.getElementsByTagName("body")[0].style.backgroundColor = "black";
 }
 
-Mapa.prototype.actualizar = function(registroTemporal, posicionJugadorEnPixeles) {
+Mapa.prototype.actualizar = function(registroTemporal, posicionJugadorEnPixeles) 
+{
 	this.posicion.x = posicionJugadorEnPixeles.x;
 	this.posicion.y = posicionJugadorEnPixeles.y;
 
@@ -140,14 +118,6 @@ Mapa.prototype.actualizar = function(registroTemporal, posicionJugadorEnPixeles)
 }
 
 Mapa.prototype.dibujar = function() {
-	/*
-	for (c = 0; c < this.capasTiles.length; c++) {
-		for (i = 0; i < this.capasTiles[c].tiles.length; i++) {
-			this.capasTiles[c].tiles[i].mover(this.posicion.x, this.posicion.y);
-		}
-	}
-	*/
-
 	document.getElementById("mapa").style.transform = 'translate3d(' + this.posicion.x + 'px, ' + this.posicion.y + 'px, 0' + ')';
 	
 	if(debug.debugging) {
@@ -157,6 +127,6 @@ Mapa.prototype.dibujar = function() {
 		
 		for (rl = 0; rl < this.rectangulosLocalizaciones.length; rl++) {
 			this.rectangulosLocalizaciones[rl].rectangulo.mover(this.posicion.x, this.posicion.y);
-		}
+		} 
 	}
-}
+} 
