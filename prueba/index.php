@@ -40,15 +40,13 @@
 			</div>
 
 			<div id ="inicioSesion">
-				<form action ="#">
-					<label for = "usuario" style = "color: white;"> Usuario: </label>
-					<input type="text" id="usuario" name="usuario"><br>
+			<form action="servidor/graba.php" method="post" >
+				<p style="color:white;">Nombre de usuario: <input type="text" name="usuario"  placeholder="Usuario para acceder"></p>
 
-					<label for = "contraseña" style = "color: white;"> Contraseña: </label>
-					<input type="text" id="contraseña" name="contraseña"><br>
-					
-					<input onclick="Grabar()" type="submit" value="Submit">
-				</form>
+				<p style="color:white;">Contraseña: <input type="password" name="contraseña" placeholder="Elije una contraseña fuerte"></p>
+
+				<p><input type="submit" value="Enviar datos"></p>
+			</form>
 			</div>
 			
 
