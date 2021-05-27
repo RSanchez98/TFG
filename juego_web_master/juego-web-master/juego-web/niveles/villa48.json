@@ -442,6 +442,29 @@
          "y":0
         }, 
         {
+         "color":"#ffff00",
+         "draworder":"topdown",
+         "id":5,
+         "name":"muerte",
+         "objects":[
+                {
+                 "height":46,
+                 "id":58,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":98,
+                 "x":1776,
+                 "y":1582
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":false,
+         "x":0,
+         "y":0
+        }, 
+        {
          "color":"#00ff00",
          "draworder":"topdown",
          "id":3,
@@ -472,12 +495,12 @@
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
- "nextlayerid":5,
- "nextobjectid":58,
+ "nextlayerid":6,
+ "nextobjectid":59,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.4.3",

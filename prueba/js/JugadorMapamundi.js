@@ -10,7 +10,7 @@ function JugadorMapamundi(posicionInicialEnPixeles, estadoJuego)
 	this.origenXSprite = 0;
 	this.origenYSprite = this.alto * this.personaje;
 
-	this.velocidadMovimiento = 2;
+	this.velocidadMovimiento = 4;
 
 	this.velocidadX = 0;
 	this.velocidadY = 0;
