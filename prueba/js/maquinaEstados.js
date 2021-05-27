@@ -19,7 +19,7 @@ var maquinaEstados =
 			case listadoEstados.NIVEL:
 				maquinaEstados.estadoActual = new EstadoMapamundi(listadoEstados.NIVEL, objetoEntradaLocalizacion.rutaMapa, 
 					objetoEntradaLocalizacion.coordenadaXInicial, objetoEntradaLocalizacion.coordenadaYInicial);
-					//reproducir audio del nivel
+					
 				break;
 			case listadoEstados.PANTALLA_TITULO:
 				maquinaEstados.estadoActual = new EstadoPantallaTitulo();

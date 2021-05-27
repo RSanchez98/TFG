@@ -19,7 +19,7 @@ var maquinaEstados =
 			case listadoEstados.NIVEL:
 				maquinaEstados.estadoActual = new EstadoMapamundi(listadoEstados.NIVEL, objetoEntradaLocalizacion.rutaMapa,
 					objetoEntradaLocalizacion.coordenadaXInicial, objetoEntradaLocalizacion.coordenadaYInicial);
-					console.log("Nivel 1");
+					console.log("Nivel");
 				break;
 			case listadoEstados.PANTALLA_TITULO:
 				console.log("iniciando pantalla");
