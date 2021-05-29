@@ -1,11 +1,11 @@
 <?php
-    //var_dump($_POST);
     $usuario = $_POST['usuario'];
-    $contraseña = $_POST['contraseña'];
-    $c = new mysqli("localhost", "root", "" ,"prueba1");
+    $correo = $_POST['correo'];
+    $contrasena = $_POST['contrasena'];
+    $c = new mysqli("localhost", "root", "" ,"rodrigo");
     if($c == TRUE)
         {
-            $sql = "INSERT prueba1 VALUES(null, '$usuario', '$contraseña' )";
+            $sql = "INSERT jugador VALUES(null, '$usuario', '$correo', MD5('$contrasena'), 'N' )"; //CODIFICAR CONTRASEÑA
             if($c->query($sql) == TRUE)
             {
                 echo 'S';

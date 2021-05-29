@@ -5,10 +5,14 @@
 		<meta charset="utf-8">
 		<title>Bowie's Game!</title>
 		<meta name="description" content="TFG JUEGO WEB PARA IES Romero Vargas">
-		<meta name="author" content="Rodrigo Sánchez Valle">
+		<meta name="author" content="Rodrigo SÃ¡nchez Valle">
 		<link rel ="icon" type="image/png" href="img/faces/base1.png"/>
 	</head>
-	
+	<!-- <div>
+		<input type="text" id = "usuario"> <br>
+		<input type="text" id = "contrasena"><br>
+		<input type="submit" onclick="Grabar()" id="parrafo" value="Submit" style="color: white;">Guardar</input>
+	</div> -->
 	<body>
 	
 		<div id="juego">	
@@ -30,19 +34,20 @@
 			<div id="popup">
 			</div>
 
-			<div id ="inicioSesion" style = "padding-left: 800px; padding-top: 400px;">
-				<h3 style="text-align: center; margin: 0px;">Iniciar Sesión</h3>
+			<div id="inventario">
+				<div id="cabecera">INVENTARIO</div>
+				<div id="contenido">Contenido</div>
+			</div>
 
-				<label id = "usuario" for = "usuario" >Correo: </label>
-				<input type="text" id="correo"  size="35">
-				<br>
-				<label id="correo" for = "correo" >Usuario: </label>
-				<input type="text" id="usuario"  size="35">
-				<br>
-				<label id="constrasena" for = "contrasena">Contrasena: </label>
-				<input type="password" id="contrasena" size="35">
-				<br>
-				<input onclick="Grabar()" type="submit" value="Enviar">
+			<div id ="inicioSesion">
+				
+				<label for = "usuario" style = "color: white;"> Usuario: </label>
+				<input type="text" id="usuario" ><br>
+
+				<label for = "contrasena" style = "color: white;"> contrasena: </label>
+				<input type="text" id="contrasena" ><br>
+				
+				<input onclick="Grabar()" type="submit" value="Submit">
 				
 			</div>
 			
@@ -54,13 +59,10 @@
 		<script>
 			function Grabar()
 			{
-                
 				var usuario = document.getElementById("usuario").value;
-				var contrasena = document.getElementById("correo").value;
 				var contrasena = document.getElementById("contrasena").value;
 
 				var xhr = new XMLHttpRequest();
-                console.log(xhr)
 				xhr.onredystatechange = function()
 				{
 					console.log(xhr.responseText);
@@ -70,16 +72,12 @@
 						{
 							alert('Error en la grabacion');
 						}
-						else
-						{
-							alert("Correct");
-						}
 					}
 				}
 
-				xhr.open("POST", "servidor/graba.php", true);
+				xhr.open("GET", "servidor/graba.php", true);
 				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-				xhr.send(`usuario=${usuario}&correo=${correo}&contrasena=${contrasena}`);
+				xhr.send(`usuario=${usuario}&contrasena=${contrasena}`);
 			}
 		</script>
 	</body>
