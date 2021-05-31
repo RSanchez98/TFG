@@ -1,29 +1,32 @@
-<?php
+<?php   
+    $host="localhost";
+    $user = "root";
+    $pass = "";
+    $bd = "rodrigo";
+
+
+
     var_dump($_POST);
+   
     $nick = $_POST['nick'];
     $correo = $_POST['correo'];
     $contrasena = $_POST['contrasena'];
 
-  
-    $c = new mysqli("localhost", "root", "" ,"rodrigo");
-    if($c == TRUE)
-    {
-        $sql = "INSERT jugador VALUES(null, '$nick', '$correo', MD5('$contrasena'), 'N' )"; //CODIFICAR CONTRASEÑA
-        if($c->query($sql) == TRUE)
-        {
-            echo 'S';
-        } 
-        else {
-            echo 'N';
-        }
 
-        // $sql = "INSERT partida VALUES(null,'Ciudad del Arbol Milenario', 'A', '$fecha_hoy','$usuario')";
-        // if($c->query($sql) == TRUE)
-        // {
-        //     echo 'S';
-        // } 
-        // else {
-        //     echo 'N';
-        // }
-    }
+  
+    $c = new MySQLI($host, $user, $pass ,$bd);
+    
+    $sql = "INSERT INTO `jugador` (`nick`, `email`, `contrasena`, `admin` ) VALUES ('$nick', '$correo', '$contrasena', 'N')";
+    $sql = "INSERT INTO `partida` (`nick`, `email`, `contrasena`, `admin` ) VALUES ('$nick', '$correo', '$contrasena', 'N')";
+    if($c->query($sql) === TRUE)
+    {
+        echo 'S';
+    } 
+    else {
+        echo 'N';
+    } 
+    
+    var_dump($nick);
+    var_dump($sql);
+    var_dump($c);
 ?> 

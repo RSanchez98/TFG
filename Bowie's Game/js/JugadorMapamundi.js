@@ -20,7 +20,7 @@ function JugadorMapamundi(posicionInicialEnPixeles, estadoJuego) {
 	this.saltoBloqueado = false;
 	this.saltoYInicial = 0;
 	this.framesAereosMaximos = 12;
-	this.framesAereos = this.framesAereosMaximos;
+	this.framesAereos = this.framesAereosMaximos; 
 
 	this.velocidadTerminal = 10;
 	this.velocidadCaida = 0;

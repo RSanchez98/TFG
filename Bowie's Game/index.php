@@ -33,16 +33,22 @@
 			<div id ="inicioSesion" style = "padding-left: 800px; padding-top: 400px;">
 				<h3 style="text-align: center; margin: 0px;">Iniciar Sesión</h3>
 
-				<label id="nick" for="nick" >Usuario: </label>
+				<label  >Usuario: </label> 
+				<br>
 				<input type="text" id="nick"  size="35">
 				<br>
-				<label id = "correo" for="correo" >Correo: </label>
+
+				<label  >Correo: </label> 
+				<br>
 				<input type="text" id="correo"  size="35">
 				<br>
-				<label id="contrasena" for="contrasena" >Contraseña: </label>
+
+				<label >Contraseña: </label> 
+				<br>
 				<input type="password" id="contrasena" size="35">
 				<br>
-				<input onclick="Grabar()" type="submit" value="Enviar">
+
+				<button onclick="Grabar()" type="button" value="Enviar">Enviar</button>
 				
 			</div>
 			
@@ -51,40 +57,7 @@
 		<?php
 			include_once 'app/cargadorArchivosJS.inc.php';
 		?>
-		<script>
-			function Grabar()
-			{
-                
-				var nick = document.getElementById("nick").value;
-				var correo = document.getElementById("correo").value;
-				var contrasena = document.getElementById("contrasena").value;
-
-
-				var xhr = new XMLHttpRequest();
-                console.log(xhr);
-				xhr.onredystatechange = function()
-				{
-					console.log(xhr.responseText);
-					if(xhr.readyState == 4 && xhr.status == 200)
-					{
-						if(xhr.responseText == 'N')
-						{
-							alert('Error en la grabacion');
-						}
-						else
-						{
-							alert("Correct");
-						}
-					}
-				}
-
-				xhr.open("POST", "servidor/graba.php", true);
-				xhr.responseType = "text";
-				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-				xhr.send(`correo=${correo}&nick=${nick}&contrasena=${contrasena}`);
-				console.log(xhr.send);
-			}
-		</script>
+		<script src ="grabarJugador.js"></script>
 	</body>
 	
 </html>
