@@ -33,13 +33,13 @@
 			<div id ="inicioSesion" style = "padding-left: 800px; padding-top: 400px;">
 				<h3 style="text-align: center; margin: 0px;">Iniciar Sesión</h3>
 
-				<label id = "usuario" for = "usuario" >Correo: </label>
+				<label id="nick" for="nick" >Usuario: </label>
+				<input type="text" id="nick"  size="35">
+				<br>
+				<label id = "correo" for="correo" >Correo: </label>
 				<input type="text" id="correo"  size="35">
 				<br>
-				<label id="correo" for = "correo" >Usuario: </label>
-				<input type="text" id="usuario"  size="35">
-				<br>
-				<label id="constrasena" for = "contrasena">Contrasena: </label>
+				<label id="contrasena" for="contrasena" >Contraseña: </label>
 				<input type="password" id="contrasena" size="35">
 				<br>
 				<input onclick="Grabar()" type="submit" value="Enviar">
@@ -55,12 +55,13 @@
 			function Grabar()
 			{
                 
-				var usuario = document.getElementById("usuario").value;
-				var contrasena = document.getElementById("correo").value;
+				var nick = document.getElementById("nick").value;
+				var correo = document.getElementById("correo").value;
 				var contrasena = document.getElementById("contrasena").value;
 
+
 				var xhr = new XMLHttpRequest();
-                console.log(xhr)
+                console.log(xhr);
 				xhr.onredystatechange = function()
 				{
 					console.log(xhr.responseText);
@@ -78,8 +79,10 @@
 				}
 
 				xhr.open("POST", "servidor/graba.php", true);
+				xhr.responseType = "text";
 				xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-				xhr.send(`usuario=${usuario}&correo=${correo}&contrasena=${contrasena}`);
+				xhr.send(`correo=${correo}&nick=${nick}&contrasena=${contrasena}`);
+				console.log(xhr.send);
 			}
 		</script>
 	</body>

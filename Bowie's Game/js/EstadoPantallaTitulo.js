@@ -1,8 +1,8 @@
 function EstadoPantallaTitulo() {
     this.rutaImagenTitulo = "img/titulo.png";
     this.idHTML = "pantalla-titulo";
-    this.anchoImagen = "500";
-    this.altoImagen = "300";
+    this.anchoImagen = "700";
+    this.altoImagen = "500";
 
     this.movimientoY = 0;
 

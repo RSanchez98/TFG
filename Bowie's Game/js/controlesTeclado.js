@@ -6,6 +6,6 @@ var controlesTeclado =
 	derecha: 'd',
 	entrarLocalizacion: 'r',
 	salirLocalizacion: 'x',
-	inicioSesion: 'i',
+	inicioSesion: 'ç',
 	saltar: ' '
 };
