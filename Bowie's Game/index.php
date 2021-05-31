@@ -58,6 +58,7 @@
 			include_once 'app/cargadorArchivosJS.inc.php';
 		?>
 		<script src ="grabarJugador.js"></script>
+		<script src ="grabarPartida.js"></script>
 	</body>
 	
 </html>

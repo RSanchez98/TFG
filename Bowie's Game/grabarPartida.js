@@ -1,10 +1,11 @@
 
 function Grabar()
 {
-    var nick = document.getElementById("nick").value;
-    var correo = document.getElementById("correo").value;
-    var contrasena = document.getElementById("contrasena").value;
-
+    var id = id;
+    var nombre = "Partida1";
+    var estado = "A";
+    var fecha_creada = new Date()
+    var jugador_nick = document.getElementById("nick");
 
     // console.log(correo);
     // console.log(nick);
@@ -30,7 +31,7 @@ function Grabar()
     xhr.open("POST", "servidor/graba.php", true);
     xhr.responseType = "text";
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); 
-    xhr.send(`nick=${nick}&correo=${correo}&contrasena=${contrasena}`);
+    xhr.send(`id=${id}&nombre=${nombre}&estado=${estado}&fecha_creada=${fecha_creada}&jugador_nick=${jugador_nick}`);
 
     // console.log(xhr.send(`correo=${correo}&nick=${nick}&contrasena=${contrasena}`));
 
