@@ -30,8 +30,13 @@
 			<div id="popup">
 			</div>
 
-			<div id ="inicioSesion" style = "padding-left: 800px; padding-top: 400px;">
+			<div id ="inicioSesion" style = "padding-left: 800px; padding-top: 400px; display:none">
 				<h3 style="text-align: center; margin: 0px;">Iniciar Sesión</h3>
+
+				<label  >Nombre partida: </label> 
+				<br>
+				<input type="text" id="nombre_partida"  size="35">
+				<br>
 
 				<label  >Usuario: </label> 
 				<br>
@@ -57,8 +62,7 @@
 		<?php
 			include_once 'app/cargadorArchivosJS.inc.php';
 		?>
-		<script src ="grabarJugador.js"></script>
-		<script src ="grabarPartida.js"></script>
+		<script src ="grabar.js"></script>
 	</body>
 	
 </html>

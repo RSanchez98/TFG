@@ -6,33 +6,37 @@
 
 
 
-    var_dump($_POST);
+    // var_dump($_POST);
    
     $nick = $_POST['nick'];
     $correo = $_POST['correo'];
-    $contrasena = $_POST['contrasena'];
+    $contrasena = MD5($_POST['contrasena']);
 
-    $id = $_POST['id'];
-    $nombre = $_POST['nombre'];
+    $nombre_partida = $_POST['nombre_partida'];
     $estado = $_POST['estado'];
-    $fecha_creada = $_POST['fecha_creada'];
-    $jugador_nick = $_POST['nick']
 
 
   
     $c = new MySQLI($host, $user, $pass ,$bd);
     
     $sql = "INSERT INTO `jugador` (`nick`, `email`, `contrasena`, `admin` ) VALUES ('$nick', '$correo', '$contrasena', 'N')";
-    $sql = "INSERT INTO `partida` (`id`, `nombre`, `estado`, `fecha_creada`, `jugador_nick` ) VALUES ('$id', '$nombre', 'A', '$fecha_creada', '$jugador_nick')";
+
     if($c->query($sql) === TRUE)
     {
-        echo 'S';
-    } 
-    else {
-        echo 'N';
-    } 
+        $sql = "INSERT INTO `partida` (`id`, `nombre`, `estado`, `fecha_creada`, `jugador_nick` ) VALUES (null, '$nombre_partida', '$estado', NOW(), '$nick')";
+
+        echo $sql;
+
+        if($c->query($sql) === TRUE)
+        {
+            echo 'S';
+        } 
+        else {
+            echo 'N';
+        } 
+    }
     
-    var_dump($nick);
-    var_dump($sql);
-    var_dump($c);
+    // var_dump($nick);
+    // var_dump($sql);
+    // var_dump($c);
 ?> 
