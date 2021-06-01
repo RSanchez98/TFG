@@ -1,5 +1,3 @@
-// ctrl + f5 - recargar limpiando la caché
-
 var inicio = 
 {
 	iniciadores: 

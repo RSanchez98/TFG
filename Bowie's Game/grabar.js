@@ -9,7 +9,6 @@ function Grabar()
     var estado = 'A';
 
 
-
     // console.log(correo);
     // console.log(nick);
 
@@ -18,7 +17,7 @@ function Grabar()
     xhr.onreadystatechange = function()
     {
         console.log(xhr.responseText);
-        
+
         if(xhr.readyState == 4 && xhr.status == 200)
         {
             if(xhr.responseText == 'N')

@@ -25,7 +25,6 @@ function Mapa(objetoJSON, estadoJuego)
 
 	this.rectangulosColisiones = [];
 	this.rectangulosLocalizaciones = [];
-	//rectangulos escaleras
 
 	this.iniciarCapas(objetoJSON.layers);
 

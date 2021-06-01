@@ -19,10 +19,10 @@ var inicioSesion =
         let ancho = 300;
 
         let id = "inicioSesion";
-        let idUsuario = "usuario";
-        let idCorreo = "correo";
-        let idConstrasena = "contrasena";
-        let idInput = "input";
+        // let idUsuario = "usuario";
+        // let idCorreo = "correo";
+        // let idConstrasena = "contrasena";
+        // let idInput = "input";
 
         // document.getElementById(idUsuario).style.backgroundColor = "#8AC9DD";
         // document.getElementById(idUsuario).style.padding = "0.3em";

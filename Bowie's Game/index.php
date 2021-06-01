@@ -9,8 +9,7 @@
 		<link rel ="icon" type="image/png" href="img/faces/base1.png"/>
 	</head>
 	
-	<body>
-	
+	<body>	
 		<div id="juego">	
 			<div id="pantalla-titulo">
 			</div>	
@@ -31,6 +30,7 @@
 			</div>
 
 			<div id ="inicioSesion" style = "padding-left: 800px; padding-top: 400px; display:none">
+			
 				<h3 style="text-align: center; margin: 0px;">Iniciar Sesión</h3>
 
 				<label  >Nombre partida: </label> 
@@ -63,6 +63,7 @@
 			include_once 'app/cargadorArchivosJS.inc.php';
 		?>
 		<script src ="grabar.js"></script>
+		<script src ="grabarNivel.js"></script>
 	</body>
 	
 </html>

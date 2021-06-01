@@ -4,9 +4,6 @@
     $pass = "";
     $bd = "rodrigo";
 
-
-
-    // var_dump($_POST);
    
     $nick = $_POST['nick'];
     $correo = $_POST['correo'];
@@ -14,6 +11,9 @@
 
     $nombre_partida = $_POST['nombre_partida'];
     $estado = $_POST['estado'];
+
+    $puntuacion = $_POST['puntuacion'];
+    $mapa = $_POST['mapa'];
 
 
   
@@ -25,18 +25,19 @@
     {
         $sql = "INSERT INTO `partida` (`id`, `nombre`, `estado`, `fecha_creada`, `jugador_nick` ) VALUES (null, '$nombre_partida', '$estado', NOW(), '$nick')";
 
-        echo $sql;
-
         if($c->query($sql) === TRUE)
         {
-            echo 'S';
-        } 
-        else {
-            echo 'N';
-        } 
+
+            $sql = "INSERT INTO `nivel` (`id`, `puntuacion`, `mapa`) VALUES (null, '$puntuacion', '$mapa')";
+
+            if($c->query($sql) === TRUE)
+            {
+                echo 'S';
+            } 
+            else {
+                echo 'N';
+            } 
+        }
+
     }
-    
-    // var_dump($nick);
-    // var_dump($sql);
-    // var_dump($c);
 ?> 
