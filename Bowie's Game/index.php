@@ -35,25 +35,28 @@
 
 				<label  >Nombre partida: </label> 
 				<br>
-				<input type="text" id="nombre_partida"  size="35">
-				<br>
+				<input type="text" id="nombre_partida"  size="45">
+				<hr>
 
 				<label  >Usuario: </label> 
 				<br>
-				<input type="text" id="nick"  size="35">
+				<input type="text" id="nick"  size="45">
 				<br>
 
 				<label  >Correo: </label> 
 				<br>
-				<input type="text" id="correo"  size="35">
+				<input type="text" id="correo"  size="45">
 				<br>
 
 				<label >Contraseña: </label> 
 				<br>
-				<input type="password" id="contrasena" size="35">
+				<input type="password" id="contrasena" size="45">
 				<br>
 
 				<button onclick="Grabar()" type="button" value="Enviar">Enviar</button>
+				<hr>
+				<button onclick="Sesion()" type="button" value="Guardar" style = "margin-left:30% ">Guardar Sesión</button>
+
 				
 			</div>
 			
@@ -64,6 +67,7 @@
 		?>
 		<script src ="grabar.js"></script>
 		<script src ="grabarNivel.js"></script>
+		<script src ="grabarSesion.js"></script>
 	</body>
 	
 </html>

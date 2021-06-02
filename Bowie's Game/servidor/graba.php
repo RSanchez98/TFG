@@ -15,6 +15,12 @@
     $puntuacion = $_POST['puntuacion'];
     $mapa = $_POST['mapa'];
 
+    $otros = $_POST['otros'];
+
+    $id_partida = "SELECT id FROM partida";
+    $fecha_hora_inicio = "SELECT fecha_creada FROM partida";
+   
+
 
   
     $c = new MySQLI($host, $user, $pass ,$bd);
@@ -32,11 +38,21 @@
 
             if($c->query($sql) === TRUE)
             {
-                echo 'S';
-            } 
-            else {
-                echo 'N';
-            } 
+                $sql = "INSERT INTO `sesion` (`id_partida`, `id`, `fecha_hora_inicio`, `fecha_hora_fin`, `otros`) VALUES ('$id_partida', null, '$fecha_hora_inicio', NOW(), '$_otros')";
+    
+                // if($c->query($sql) === TRUE)
+                // {
+                //     $sql = "INSERT INTO `sesion_has_nivel` (``) VALUES ('')";
+        
+                //     if($c->query($sql) === TRUE)
+                //     {
+                //         echo 'S';
+                //     } 
+                //     else {
+                //         echo 'N';
+                //     } 
+                // }
+            }
         }
 
     }
