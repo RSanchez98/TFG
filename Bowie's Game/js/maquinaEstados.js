@@ -14,7 +14,7 @@ var maquinaEstados =
 			case listadoEstados.MENU_INICIAL:
 				break;
 			case listadoEstados.MAPAMUNDI:
-				maquinaEstados.estadoActual = new EstadoMapamundi(listadoEstados.MAPAMUNDI, "mapas/desierto48.json", 500, 500);
+				maquinaEstados.estadoActual = new EstadoMapamundi(listadoEstados.MAPAMUNDI, "mapas/desierto48.json", 200, 300);
 				break;
 			case listadoEstados.NIVEL:
 				maquinaEstados.estadoActual = new EstadoMapamundi(listadoEstados.NIVEL, objetoEntradaLocalizacion.rutaMapa,

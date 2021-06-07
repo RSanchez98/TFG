@@ -66,7 +66,7 @@
   <object id="19" x="1962.67" y="1104" width="50.6667" height="49.3333"/>
   <object id="20" x="2062.67" y="1102.67" width="46.6667" height="46.6667"/>
   <object id="21" x="1969.33" y="1265.33" width="244" height="128"/>
-  <object id="22" x="1066.67" y="1536" width="1282.67" height="92"/>
+  <object id="22" x="1066.67" y="1540" width="1282.67" height="88"/>
   <object id="23" x="116" y="872" width="1750.67" height="68.6667"/>
   <object id="24" x="-5.333" y="914" width="145.333" height="722.667"/>
   <object id="26" x="432" y="1158" width="140" height="333.333"/>
@@ -83,18 +83,18 @@
   <object id="53" x="768.67" y="1298" width="48" height="44"/>
   <object id="54" x="578" y="1154" width="50.6667" height="42.6667"/>
   <object id="55" x="568" y="1439" width="54" height="49"/>
-  <object id="57" x="1726" y="1488" width="48" height="46"/>
+  <object id="57" x="1726" y="1491" width="48" height="46"/>
   <object id="58" x="958" y="1583" width="104" height="46"/>
-  <object id="59" x="1630" y="1439" width="48" height="22"/>
-  <object id="60" x="1106" y="1007" width="48" height="522"/>
+  <object id="59" x="1631" y="1441" width="48" height="22"/>
+  <object id="60" x="1106" y="1011" width="48" height="522"/>
   <object id="61" x="1058" y="1437" width="48" height="140"/>
-  <object id="62" x="1150" y="1199" width="48" height="328"/>
-  <object id="63" x="1244" y="1249" width="48" height="236"/>
-  <object id="64" x="1340" y="1295" width="48" height="186"/>
+  <object id="62" x="1151" y="1202" width="48" height="328"/>
+  <object id="63" x="1247" y="1251" width="48" height="236"/>
+  <object id="64" x="1343" y="1300" width="48" height="186"/>
   <object id="65" x="1438" y="1347" width="48" height="138"/>
   <object id="66" x="1536" y="1395" width="48" height="88"/>
   <object id="67" x="1248" y="1107" width="538" height="16"/>
-  <object id="68" x="1148" y="1009" width="580" height="46"/>
+  <object id="68" x="1148" y="1012" width="580" height="46"/>
  </objectgroup>
  <objectgroup color="#00ff00" id="3" name="localizaciones">
   <object id="37" name="Salida [X]" x="191.33" y="1446.67" width="50.6667" height="89.3333"/>
