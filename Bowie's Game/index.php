@@ -54,8 +54,7 @@
 				<br>
 
 				<button onclick="Grabar()" type="button" value="Enviar">Enviar</button>
-				<hr>
-				<button onclick="Sesion()" type="button" value="Guardar" style = "margin-left:30% ">Guardar Sesión</button>
+				
 
 				
 			</div>
@@ -66,8 +65,8 @@
 			include_once 'app/cargadorArchivosJS.inc.php';
 		?>
 		<script src ="grabar.js"></script>
-		<script src ="grabarNivel.js"></script>
-		<script src ="grabarSesion.js"></script>
+		<!-- <script src ="grabarNivel.js"></script>
+		<script src ="grabarSesion.js"></script> -->
 	</body>
 	
 </html>

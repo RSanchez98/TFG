@@ -17,42 +17,43 @@
 
     $otros = $_POST['otros'];
 
-    $id_partida = "SELECT id FROM partida";
-    $fecha_hora_inicio = "SELECT fecha_creada FROM partida";
-   
-
-
-  
+    //$fecha_hora_inicio = "SELECT fecha_creada FROM partida";
+    
+    
+    
+    
     $c = new MySQLI($host, $user, $pass ,$bd);
+    
     
     $sql = "INSERT INTO `jugador` (`nick`, `email`, `contrasena`, `admin` ) VALUES ('$nick', '$correo', '$contrasena', 'N')";
 
     if($c->query($sql) === TRUE)
     {
         $sql = "INSERT INTO `partida` (`id`, `nombre`, `estado`, `fecha_creada`, `jugador_nick` ) VALUES (null, '$nombre_partida', '$estado', NOW(), '$nick')";
-
+        
+        // $sql = "SELECT id FROM partida";
+        // $id_partida = $c->query($sql);
+        // //$c->query($id_partida);
+        // var_dump($sql);
+        // echo json_encode($id_partida->fetch_all(MYSQLI_ASSOC));
+        
         if($c->query($sql) === TRUE)
         {
 
-            $sql = "INSERT INTO `nivel` (`id`, `puntuacion`, `mapa`) VALUES (null, '$puntuacion', '$mapa')";
-
-            if($c->query($sql) === TRUE)
-            {
-                $sql = "INSERT INTO `sesion` (`id_partida`, `id`, `fecha_hora_inicio`, `fecha_hora_fin`, `otros`) VALUES ('$id_partida', null, '$fecha_hora_inicio', NOW(), '$_otros')";
-    
-                // if($c->query($sql) === TRUE)
-                // {
-                //     $sql = "INSERT INTO `sesion_has_nivel` (``) VALUES ('')";
-        
-                //     if($c->query($sql) === TRUE)
-                //     {
-                //         echo 'S';
-                //     } 
-                //     else {
-                //         echo 'N';
-                //     } 
-                // }
-            }
+            $sql = "INSERT INTO `nivel` (`id`, `puntuacion`, `mapa`) VALUES (null, '$puntuacion', '$mapa')"; 
+                
+                if($c->query($sql) === TRUE)
+                {
+                    $sql = "INSERT INTO `sesion` (`id_partida`, `id`, `fecha_hora_inicio`, `fecha_hora_fin`, `otros`) VALUES ('$id_partida', null, NOW(), NOW(), '$_otros')";
+                    if($c->query($sql) === TRUE)
+                    {
+                        echo 'S';
+                    } 
+                    else {
+                        echo 'N';
+                    }
+                }
+            
         }
 
     }
