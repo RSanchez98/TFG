@@ -19,23 +19,9 @@ var inicioSesion =
         let ancho = 300;
 
         let id = "inicioSesion";
-        // let idUsuario = "usuario";
-        // let idCorreo = "correo";
-        // let idConstrasena = "contrasena";
-        // let idInput = "input";
-
-        // document.getElementById(idUsuario).style.backgroundColor = "#8AC9DD";
-        // document.getElementById(idUsuario).style.padding = "0.3em";
-
-        // document.getElementById(idCorreo).style.backgroundColor = "#8AC9DD";
-        // document.getElementById(idCorreo).style.padding = "0.3em";
-        
-        // document.getElementById(idConstrasena).style.backgroundColor = "#8AC9DD";
-        // document.getElementById(idConstrasena).style.padding = "0.3em";
 
         
         document.getElementById(id).style.border = "3px solid black";
-
         document.getElementById(id).style.display = "block";
         document.getElementById(id).style.lineHeight = "30px";
         document.getElementById(id).style.position = "absolute;";
@@ -46,14 +32,13 @@ var inicioSesion =
         document.getElementById(id).style.color = "white";
         document.getElementById(id).style.border = "3px solid black";
         document.getElementById(id).style.padding = "0.5em";
-        // document.getElementById(id).style.textAlign = "center";
         document.getElementById(id).style.fontFamily = "sans-serif, Helvetica";
 
         inicioSesion.visible = true;
     },
     ocultar: function(registroTemporal) 
     {
-        if(!inicioSesion.visible) 
+        if(!inicioSesion.visible)  
         {
             return;
         }
