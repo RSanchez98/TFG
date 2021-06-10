@@ -54,6 +54,10 @@
 				<br>
 
 				<button onclick="Grabar()" type="button" value="Enviar">Enviar</button>
+
+				<hr>
+
+				<img src="img/controles.png"  width="300" height="150">
 				
 
 				

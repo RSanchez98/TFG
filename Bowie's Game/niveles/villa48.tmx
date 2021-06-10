@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="50" height="34" tilewidth="48" tileheight="48" infinite="0" nextlayerid="5" nextobjectid="70">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="50" height="34" tilewidth="48" tileheight="48" infinite="0" nextlayerid="5" nextobjectid="71">
  <editorsettings>
   <export target="villa48.json" format="json"/>
  </editorsettings>
@@ -95,6 +95,7 @@
   <object id="66" x="1536" y="1395" width="48" height="88"/>
   <object id="67" x="1248" y="1107" width="538" height="16"/>
   <object id="68" x="1148" y="1012" width="580" height="46"/>
+  <object id="70" x="1010" y="942.667" width="36" height="206.667"/>
  </objectgroup>
  <objectgroup color="#00ff00" id="3" name="localizaciones">
   <object id="37" name="Salida [X]" x="191.33" y="1446.67" width="50.6667" height="89.3333"/>

@@ -75,7 +75,7 @@ CREATE TABLE `partida` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   `estado` enum('A','F') NOT NULL,
-  `fecha_crteada` date NOT NULL,
+  `fecha_creada` date NOT NULL,
   `jugador_nick` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_partida_jugador_idx` (`jugador_nick`),
@@ -101,11 +101,11 @@ DROP TABLE IF EXISTS `sesion`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sesion` (
   `partida_id` int(11) NOT NULL,
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `fecha_hora_inicio` datetime NOT NULL,
   `fecha_hora_fin` datetime DEFAULT NULL,
   `otros` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`partida_id`,`id`),
+  PRIMARY KEY (`id`),
   KEY `fk_sesion_partida1_idx` (`partida_id`),
   CONSTRAINT `fk_sesion_partida1` FOREIGN KEY (`partida_id`) REFERENCES `partida` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
