@@ -45,7 +45,7 @@
 
 				<label  >Correo: </label> 
 				<br>
-				<input type="text" id="correo"  size="45">
+				<input type="email" id="correo"  size="45">
 				<br>
 
 				<label >Contraseña: </label> 

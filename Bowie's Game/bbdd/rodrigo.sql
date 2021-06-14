@@ -1,161 +1,212 @@
--- MariaDB dump 10.17  Distrib 10.4.14-MariaDB, for Win64 (AMD64)
+-- phpMyAdmin SQL Dump
+-- version 5.0.3
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: rodrigo
--- ------------------------------------------------------
--- Server version	10.4.14-MariaDB
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 14-06-2021 a las 13:43:19
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.11
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `jugador`
+-- Base de datos: `rodrigo`
+--
+CREATE DATABASE IF NOT EXISTS `rodrigo` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `rodrigo`;
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `melocargotodo` ()  begin
+truncate partida;
+truncate sesion;
+truncate nivel;
+truncate sesion_has_nivel;
+truncate jugador;
+end$$
+
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `jugador`
 --
 
-DROP TABLE IF EXISTS `jugador`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `jugador` (
   `nick` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   `contrasena` varchar(45) NOT NULL,
-  `admin` enum('S','N') NOT NULL,
-  PRIMARY KEY (`nick`)
+  `admin` enum('S','N') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `jugador`
+-- Volcado de datos para la tabla `jugador`
 --
 
-LOCK TABLES `jugador` WRITE;
-/*!40000 ALTER TABLE `jugador` DISABLE KEYS */;
-/*!40000 ALTER TABLE `jugador` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `jugador` (`nick`, `email`, `contrasena`, `admin`) VALUES
+('asdf', 'f', 'eff7d5dba32b4da32d9a67a519434d3f', 'N'),
+('cv', 'b', '92eb5ffee6ae2fec3ad71c777531578f', 'N'),
+('f', 'f', '8fa14cdd754f91cc6554c9e71929cce7', 'N');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `nivel`
+-- Estructura de tabla para la tabla `nivel`
 --
 
-DROP TABLE IF EXISTS `nivel`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `nivel` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `puntuacion` int(11) NOT NULL,
-  `mapa` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
+  `mapa` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `nivel`
+-- Volcado de datos para la tabla `nivel`
 --
 
-LOCK TABLES `nivel` WRITE;
-/*!40000 ALTER TABLE `nivel` DISABLE KEYS */;
-/*!40000 ALTER TABLE `nivel` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `nivel` (`id`, `puntuacion`, `mapa`) VALUES
+(1, 100, 'Ciudad del Arbol Milenario'),
+(2, 100, 'Ciudad del Arbol Milenario'),
+(3, 100, 'Ciudad del Arbol Milenario');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `partida`
+-- Estructura de tabla para la tabla `partida`
 --
 
-DROP TABLE IF EXISTS `partida`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `partida` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `estado` enum('A','F') NOT NULL,
-  `fecha_creada` date NOT NULL,
-  `jugador_nick` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_partida_jugador_idx` (`jugador_nick`),
-  CONSTRAINT `fk_partida_jugador` FOREIGN KEY (`jugador_nick`) REFERENCES `jugador` (`nick`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `fecha_creada` date DEFAULT NULL,
+  `jugador_nick` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `partida`
+-- Volcado de datos para la tabla `partida`
 --
 
-LOCK TABLES `partida` WRITE;
-/*!40000 ALTER TABLE `partida` DISABLE KEYS */;
-/*!40000 ALTER TABLE `partida` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `partida` (`id`, `nombre`, `estado`, `fecha_creada`, `jugador_nick`) VALUES
+(1, 'asdf', 'A', '2021-06-14', 'asdf'),
+(2, 'dffd', 'A', '2021-06-14', 'f'),
+(3, 'fdsf', 'A', '2021-06-14', 'cv');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `sesion`
+-- Estructura de tabla para la tabla `sesion`
 --
 
-DROP TABLE IF EXISTS `sesion`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sesion` (
   `partida_id` int(11) NOT NULL,
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `fecha_hora_inicio` datetime NOT NULL,
   `fecha_hora_fin` datetime DEFAULT NULL,
-  `otros` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_sesion_partida1_idx` (`partida_id`),
-  CONSTRAINT `fk_sesion_partida1` FOREIGN KEY (`partida_id`) REFERENCES `partida` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `otros` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `sesion`
+-- Estructura de tabla para la tabla `sesion_has_nivel`
 --
 
-LOCK TABLES `sesion` WRITE;
-/*!40000 ALTER TABLE `sesion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sesion` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `sesion_has_nivel`
---
-
-DROP TABLE IF EXISTS `sesion_has_nivel`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sesion_has_nivel` (
-  `sesion_partida_id` int(11) NOT NULL,
   `sesion_id` int(11) NOT NULL,
   `nivel_id` int(11) NOT NULL,
-  `fecha_superacion_nivel` varchar(45) NOT NULL,
-  PRIMARY KEY (`sesion_partida_id`,`sesion_id`,`nivel_id`),
-  KEY `fk_sesion_has_nivel_nivel1_idx` (`nivel_id`),
-  KEY `fk_sesion_has_nivel_sesion1_idx` (`sesion_partida_id`,`sesion_id`),
-  CONSTRAINT `fk_sesion_has_nivel_nivel1` FOREIGN KEY (`nivel_id`) REFERENCES `nivel` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_sesion_has_nivel_sesion1` FOREIGN KEY (`sesion_partida_id`, `sesion_id`) REFERENCES `sesion` (`partida_id`, `id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `fecha_superacion_nivel` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `sesion_has_nivel`
+-- Índices para tablas volcadas
 --
 
-LOCK TABLES `sesion_has_nivel` WRITE;
-/*!40000 ALTER TABLE `sesion_has_nivel` DISABLE KEYS */;
-/*!40000 ALTER TABLE `sesion_has_nivel` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+--
+-- Indices de la tabla `jugador`
+--
+ALTER TABLE `jugador`
+  ADD PRIMARY KEY (`nick`);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Indices de la tabla `nivel`
+--
+ALTER TABLE `nivel`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `partida`
+--
+ALTER TABLE `partida`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_partida_jugador_idx` (`jugador_nick`);
+
+--
+-- Indices de la tabla `sesion`
+--
+ALTER TABLE `sesion`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_sesion_partida1_idx` (`partida_id`);
+
+--
+-- Indices de la tabla `sesion_has_nivel`
+--
+ALTER TABLE `sesion_has_nivel`
+  ADD PRIMARY KEY (`sesion_id`,`nivel_id`),
+  ADD KEY `fk_sesion_has_nivel_nivel1_idx` (`nivel_id`),
+  ADD KEY `fk_sesion_has_nivel_sesion1_idx` (`sesion_id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `nivel`
+--
+ALTER TABLE `nivel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `partida`
+--
+ALTER TABLE `partida`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `partida`
+--
+ALTER TABLE `partida`
+  ADD CONSTRAINT `fk_partida_jugador` FOREIGN KEY (`jugador_nick`) REFERENCES `jugador` (`nick`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `sesion`
+--
+ALTER TABLE `sesion`
+  ADD CONSTRAINT `fk_sesion_partida1` FOREIGN KEY (`partida_id`) REFERENCES `partida` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `sesion_has_nivel`
+--
+ALTER TABLE `sesion_has_nivel`
+  ADD CONSTRAINT `fk_sesion_has_nivel_nivel1` FOREIGN KEY (`nivel_id`) REFERENCES `nivel` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_sesion_has_nivel_sesion1` FOREIGN KEY (`sesion_id`) REFERENCES `sesion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2021-05-28 17:31:49

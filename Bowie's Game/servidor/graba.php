@@ -15,43 +15,35 @@
     $puntuacion = intval($_POST['puntuacion']);
     $mapa = $_POST['mapa'];
 
-    $otros = $_POST['otros'];
-
-    //$fecha_hora_inicio = "SELECT fecha_creada FROM partida";
-    
-    
+    $otros = $_POST['otros'];    
     
     
     $c = new MySQLI($host, $user, $pass ,$bd);
     
-    
     $sql = "INSERT INTO jugador (nick, email, contrasena, admin ) VALUES ('$nick', '$correo', '$contrasena', 'N')";
     
-    
-
     if($c->query($sql))
-    {
-    
+    {    
         $sql = "INSERT INTO partida (id, nombre, estado, fecha_creada, jugador_nick ) VALUES (null, '$nombre_partida', '$estado', NOW(), '$nick')";
-        
-        // $sql = "SELECT id FROM partida";
-        // $id_partida = $c->query($sql);
-        // $c->query($id_partida);
-        // var_dump($sql);
-        // echo json_encode($id_partida->fetch_all(MYSQLI_ASSOC));
-
-        
+          
         if($c->query($sql))
         {
+            $insertPartida = $c->insert_id;
+
             $sql = "INSERT INTO nivel (id, puntuacion, mapa) VALUES (null, $puntuacion, '$mapa')"; 
                 
-                if($c->query($sql))
+            if($c->query($sql))
+            {
+                $insertNivel = $c->insert_id;
+               
+                $sql = "INSERT INTO sesion VALUES ($insertPartida, null, NOW(), NOW(), '$otros')";
+                
+                if($c -> query($sql))
                 {
-                    $sql = " SELECT p.id FROM partida p JOIN jugador j ON p.jugador_nick = j.nick WHERE j.nick = '$nick' ";
-                    $result = $c->query($sql); 
-                    $id_partida = intval($result->fetch_assoc()['id']);
+                    $insertSesion = $c->insert_id;
 
-                    $sql = "INSERT INTO sesion VALUES ($id_partida, null, NOW(), NOW(), '$otros')";
+                    $sql = "INSERT INTO sesion_has_nivel VALUES ($insertSesion, $insertNivel, NOW())";
+
                     if($c->query($sql))
                     {
                         echo 'S';
@@ -61,6 +53,7 @@
                         echo 'N';
                     }
                 }
+            }
             
         }
 
