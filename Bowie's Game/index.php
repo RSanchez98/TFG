@@ -69,8 +69,6 @@
 			include_once 'app/cargadorArchivosJS.inc.php';
 		?>
 		<script src ="grabar.js"></script>
-		<!-- <script src ="grabarNivel.js"></script>
-		<script src ="grabarSesion.js"></script> -->
 	</body>
 	
 </html>
