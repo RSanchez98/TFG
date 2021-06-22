@@ -1,3 +1,0 @@
-var debug = {
-    debugging: false
-};
