@@ -24,4 +24,4 @@ Para desarrollar el juego, en principio usaré:
 	usuario no tendrá que descargar ni actualizar nada.
 	-Tiled, para el escenario y los sprites.
 
-Si todo sale según lo previsto, también desarrollaré un multijugador online con Node.js.
+Si todo sale según lo previsto, también desarrollaré un multijugador online con Node.js
